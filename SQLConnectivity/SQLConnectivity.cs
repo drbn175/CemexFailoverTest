@@ -5,9 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace SQLConnectivity
 {
-    public static class Function1
+    public static class SQLConnectivity
     {
-        [FunctionName("Function1")]
+        [FunctionName("SQLConnectivity")]
         public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
