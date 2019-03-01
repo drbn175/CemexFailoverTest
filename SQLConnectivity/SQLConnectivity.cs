@@ -5,13 +5,16 @@ using Microsoft.Extensions.Logging;
 
 namespace SQLConnectivity
 {
-    public static class SQLConnectivity
+    public static class SqlConnectivity
     {
-        [FunctionName("SQLConnectivity")]
-        public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
+        [FunctionName("SqlConnectivity")]
+        public static void Run(TimerInfo checkTimer, ILogger log)
         {
+            if (myTimer.IsPastDue)
+            {
+                log.LogInformation("Timer is running late!");
+            }
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-
         }
     }
 }
