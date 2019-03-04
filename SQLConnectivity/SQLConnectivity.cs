@@ -10,7 +10,7 @@ namespace SqlConnectivity
         [FunctionName("SqlConnectivity")]
         public static void Run(TimerInfo checkTimer, ILogger log)
         {
-            if (myTimer.IsPastDue)
+            if (checkTimer.IsPastDue)
             {
                 log.LogInformation("Timer is running late!");
             }

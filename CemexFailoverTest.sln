@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CemexFailoverTest", "CemexF
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DbTest", "DbTest\DbTest.sqlproj", "{C1B036F2-ED00-41F4-AB0C-0A29FD2F4E63}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLConnectivity", "SQLConnectivity\SQLConnectivity.csproj", "{CF603EA3-DDF7-4BDA-85FC-AEC760672FA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChecker", "SqlChecker\SqlChecker.csproj", "{CFEFBE00-DB3A-417A-A2EB-DD52BC613F48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CemexDataAcces", "CemexDataAcces\CemexDataAcces.csproj", "{47834C04-928D-4A79-A253-A8FC29705DF5}"
 EndProject
@@ -33,14 +33,6 @@ Global
 		{CF603EA3-DDF7-4BDA-85FC-AEC760672FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF603EA3-DDF7-4BDA-85FC-AEC760672FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF603EA3-DDF7-4BDA-85FC-AEC760672FA8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47834C04-928D-4A79-A253-A8FC29705DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47834C04-928D-4A79-A253-A8FC29705DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47834C04-928D-4A79-A253-A8FC29705DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47834C04-928D-4A79-A253-A8FC29705DF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3C7D140-CA49-4C7A-9F77-A0DD17DB707B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3C7D140-CA49-4C7A-9F77-A0DD17DB707B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3C7D140-CA49-4C7A-9F77-A0DD17DB707B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3C7D140-CA49-4C7A-9F77-A0DD17DB707B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
