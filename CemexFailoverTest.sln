@@ -9,7 +9,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DbTest", "DbTest\DbTest.sql
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlChecker", "SqlChecker\SqlChecker.csproj", "{CFEFBE00-DB3A-417A-A2EB-DD52BC613F48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CemexDataAcces", "CemexDataAcces\CemexDataAcces.csproj", "{47834C04-928D-4A79-A253-A8FC29705DF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CemexDataAccess", "CemexDataAcces\CemexDataAccess.csproj", "{47834C04-928D-4A79-A253-A8FC29705DF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{E3C7D140-CA49-4C7A-9F77-A0DD17DB707B}"
 EndProject
@@ -46,7 +46,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
 		SolutionGuid = {60014B29-2EB2-43B5-8620-6A2563F85A9B}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
 	EndGlobalSection
 EndGlobal

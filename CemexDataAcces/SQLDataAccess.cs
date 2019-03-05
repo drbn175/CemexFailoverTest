@@ -20,25 +20,25 @@ namespace CemexDataAcces
         TimeSpan timeoutCommand;
         protected ReliableSqlConnection relConnection;
         string stringConnection;
-        int retryCount;
-        int initialInterval;
-        int increment;
+        private readonly int retryCount;
+        private readonly int initialInterval;
+        private readonly int increment;
         protected bool IsDisposed = false;
         #endregion
 
         #region Constructor
 
-        public SQLDataAccess(string connectionString)
+        public SQLDataAccess(string connectionString, int retryCount, int initialInterval, int increment, int databaseTimeout)
         {
             try
             {
                 if (string.IsNullOrEmpty(connectionString))
-                    throw new ArgumentException("No se recibio la cadena de conexion");
-
-                retryCount = int.Parse(ConfigurationManager.AppSettings["retryCount"].ToString());
-                initialInterval = int.Parse(ConfigurationManager.AppSettings["initialInterval"].ToString());
-                increment = int.Parse(ConfigurationManager.AppSettings["increment"].ToString());
-                timeoutCommand = TimeSpan.FromSeconds(int.Parse(ConfigurationManager.AppSettings["DataBaseTimeout"].ToString()));
+                    throw new ArgumentException("String connection expected");
+                
+                this.retryCount = retryCount;
+                this.initialInterval = initialInterval;
+                this.increment = increment;
+                timeoutCommand = TimeSpan.FromSeconds(databaseTimeout);
                 stringConnection = connectionString;
 
                 retryStrategy = new Incremental(retryCount, TimeSpan.FromSeconds(this.initialInterval), TimeSpan.FromSeconds(this.increment));
@@ -71,13 +71,13 @@ namespace CemexDataAcces
             return command;
         }
 
-        public Tuple<bool, string> ExecuteReaderPolicy(string textoComando, IDataParameter[] parametros)
+        public Tuple<bool, string, string> ExecuteReaderPolicy(string textoComando, IDataParameter[] parametros)
         {
-            var response = Tuple.Create<bool, string>(false, string.Empty);
+            var response = Tuple.Create<bool, string, string>(false, string.Empty, string.Empty);
             
             if (string.IsNullOrEmpty(textoComando.Trim()))
             {
-                throw new ArgumentException("No se recibio el parametro", "string commandText");
+                throw new ArgumentException("Parameter expected", "string commandText");
             }
 
             IDataReader reader = null;
@@ -117,7 +117,7 @@ namespace CemexDataAcces
                     this.relConnection = null;
                 }
 
-                return new Tuple<bool, string>(false, ex.Message);
+                return new Tuple<bool, string, string>(false, ex.Message, ex.StackTrace);
                 throw;
             }
             finally
@@ -127,7 +127,7 @@ namespace CemexDataAcces
                     command.Dispose();
                     command = null;
                     if (!string.IsNullOrEmpty(respSQL))
-                        response = new Tuple<bool, string>(true, respSQL);
+                        response = new Tuple<bool, string, string>(true, string.Empty,string.Empty);
                 }
             }
 
