@@ -51,9 +51,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CemexDataAcces\CemexDataAcces.csproj">
+    <ProjectReference Include="..\CemexDataAcces\CemexDataAccess.csproj">
       <Project>{47834c04-928d-4a79-a253-a8fc29705df5}</Project>
-      <Name>CemexDataAcces</Name>
+      <Name>CemexDataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

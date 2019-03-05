@@ -11,6 +11,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using CemexDataAcces;
 
 namespace SqlChecker
 {
@@ -20,32 +21,75 @@ namespace SqlChecker
         public static async Task RunOrchestrator(
             [OrchestrationTrigger] DurableOrchestrationContext context)
         {
-            int retries = context.GetInput<int>();
-            bool IsAlive = await context.CallActivityAsync<bool>("SqlChecker_Query", "dbConnection");
+            List<DataBaseEntity> dataBaseEntities = context.GetInput<List<DataBaseEntity>>();
 
-            int nextCleanUpSeconds = IsAlive ? System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule")) : System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
-
-            DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
-            await context.CreateTimer(nextCleanup, CancellationToken.None);
-
-            if (!IsAlive)
+            if (dataBaseEntities == null)
             {
-                retries++;
-                if(retries >= System.Convert.ToInt32(Environment.GetEnvironmentVariable("MaxRetriesToSendAlert")))
-                {
-                    //Log Analytics
-                    LogData(new object());
-                }
+                dataBaseEntities = JsonConvert.DeserializeObject<List<DataBaseEntity>>(Environment.GetEnvironmentVariable("DataBases"));
             }
             
-            context.ContinueAsNew(IsAlive ? 0 : retries);
+            foreach(DataBaseEntity db in dataBaseEntities)
+            {
+                Tuple<bool, string,string> IsAlive = await context.CallActivityAsync<Tuple<bool, string, string>>("SqlChecker_Query", db);
+                db.IsAlive = IsAlive.Item1;
+                db.Exception = new CustomException() { Message=IsAlive.Item2, StackTrace=IsAlive.Item3 };
+
+                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
+                if (!db.IsAlive)
+                {
+                    db.Retries++;
+                    nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
+                }
+                else
+                {
+                    db.Retries = 0;
+                }
+                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
+                await context.CreateTimer(nextCleanup, CancellationToken.None);
+                //Log Analytics 
+                LogData(db);
+                
+            }
+            context.ContinueAsNew(dataBaseEntities);
+            
         }
 
         [FunctionName("SqlChecker_Query")]
-        public static bool DoQuery([ActivityTrigger] string dbConnection, ILogger log)
+        public static Tuple<bool, string,string> DoQuery([ActivityTrigger] DataBaseEntity db, ILogger log)
         {
-            log.LogInformation($"Access to DB {dbConnection}.");
-            var result = false;
+            Tuple<bool, string, string> result = new Tuple<bool, string, string>(false, string.Empty, string.Empty);
+            int retryCount;
+            int initialInterval;
+            int increment;
+            int databaseTimeout;
+            try
+            {
+                retryCount = int.Parse(Environment.GetEnvironmentVariable("RetryCount"));
+                initialInterval = int.Parse(Environment.GetEnvironmentVariable("InitialInterval"));
+                increment = int.Parse(Environment.GetEnvironmentVariable("Increment"));
+                databaseTimeout = int.Parse(Environment.GetEnvironmentVariable("DatabaseTimeout"));
+                if (db != null && db.DataBaseName != string.Empty)
+                {
+                    log.LogInformation($"Access to DB {db.DataBaseName}.");
+                    if (db.DataBaseConnection == string.Empty || db.Command == string.Empty)
+                    {
+                        result = new Tuple<bool, string, string>(false, "local.setting.json configuration error", string.Empty);
+                    }
+                    else
+                    {
+                        SQLDataAccess sqlCheck = new SQLDataAccess(db.DataBaseConnection, retryCount, initialInterval, increment, databaseTimeout);
+                        result = sqlCheck.ExecuteReaderPolicy(db.Command, null);
+                    }
+                }
+                else
+                {
+                    result = new Tuple<bool, string, string>(false, "local.setting.json configuration error", string.Empty);
+                }
+            }catch(Exception ex)
+            {
+                result = new Tuple<bool, string, string>(false, ex.Message, ex.StackTrace);
+            }
+            log.LogInformation($"SQL CHeck Result { result.Item1} {result.Item2}. {result.Item3}");
             return result;
         }
 
@@ -66,20 +110,20 @@ namespace SqlChecker
 
         public static void LogData(object req)
         {
-            string customerId = "LogAnalyticsWorkspaceId";
-            string sharedKey = "LogAnalyticsWorkspaceKey";
-            string LogName = "AzureFunctionLog";
+            string customerId = Environment.GetEnvironmentVariable("LogAnalyticsWorkspaceId");
+            string sharedKey = Environment.GetEnvironmentVariable("LogAnalyticsWorkspaceKey");
+            string LogName = Environment.GetEnvironmentVariable("AzureFunctionLog");
             var json = JsonConvert.SerializeObject(req);
 
             var datestring = DateTime.UtcNow.ToString("r");
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
-            string signature = "SharedKey " + customerId + ":" + hashedString;
+            string signature = string.Format("SharedKey {0}:{1}", customerId, hashedString);
 
             PostData(signature, datestring, json, customerId, LogName);
         }
 
-        // Build the API signature
+
         public static string BuildSignature(string message, string secret)
         {
             var encoding = new System.Text.ASCIIEncoding();
@@ -96,7 +140,7 @@ namespace SqlChecker
         public static void PostData(string signature, string date, string json, string customerId, string LogName)
         {
             // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
-            string TimeStampField = "";
+            string TimeStampField = string.Empty;
             try
             {
                 string url = string.Format(Environment.GetEnvironmentVariable("LogAnalyticsUrl"),customerId);
@@ -114,11 +158,11 @@ namespace SqlChecker
 
                 System.Net.Http.HttpContent responseContent = response.Result.Content;
                 string result = responseContent.ReadAsStringAsync().Result;
-                Console.WriteLine("Return Result: " + result);
+                Console.WriteLine(string.Format("Return Result: {0}", result));
             }
-            catch (Exception excep)
+            catch (Exception ex)
             {
-                Console.WriteLine("API Post Exception: " + excep.Message);
+                Console.WriteLine(string.Format("API Post Exception: {0}", ex.Message));
             }
         }
     }

@@ -16,7 +16,7 @@ namespace ConsoleAppTest
                 // PruebaConeccin();
 
                 //prueba.PruebaConexionSQL();
-                PruebaConeccion();
+                TestConection();
             }
             catch (Exception ex)
             {
@@ -25,11 +25,11 @@ namespace ConsoleAppTest
             }
         }
 
-        static void PruebaConeccion()
+        static void TestConection()
         {
             string cn = @"Server=tcp:pgrqasdbsirsi011.database.windows.net,1433;Initial Catalog=pgrqasqlsirsi013;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].";
-            SQLDataAccess acces = new SQLDataAccess(cn);
-            var res = acces.EjecutaReaderPolicy("select top 5 *  from ApplicantAnnouncements", null);
+            SQLDataAccess acces = new SQLDataAccess(cn,5,1,2,5);
+            var res = acces.ExecuteReaderPolicy("select top 5 *  from ApplicantAnnouncements", null);
 
         }
     }
