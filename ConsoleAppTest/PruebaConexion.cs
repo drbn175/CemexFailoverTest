@@ -9,11 +9,10 @@ namespace ConsoleAppTest
 {
     public class PruebaConexion
     {
-        public void PruebaConexionSQL()
-        {
-            string cnn = @"Server=tcp:pgrqasdbsirsi011.database.windows.net,1433;Initial Catalog=pgrqasqlsirsi013;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].";
-            SQLDataAccess acces = new SQLDataAccess(cnn, TimeSpan.FromMinutes(5));
-            var res = acces.EjecutaReaderPolicy("select * from ApplicantAnnouncements", null);
-        }
+        //public void PruebaConexionSQL()
+        //{
+        //    SQLDataAccess acces = new SQLDataAccess();
+        //    var res = acces.EjecutaReaderPolicy("select * from ApplicantAnnouncements", null);
+        //}
     }
 }

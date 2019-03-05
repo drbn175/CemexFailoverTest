@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -13,33 +14,42 @@ namespace CemexDataAcces
     {
 
         #region ClassMembers
-        protected bool IsDisposed = false;
-
+        
+        Incremental retryStrategy;
+        RetryPolicy retPol;
+        TimeSpan timeoutCommand;
         protected ReliableSqlConnection relConnection;
-
-        private string stringConnection;
-
-        private TimeSpan timeoutCommand;
-
-        const int retryCount = 4;
-        const int minBackoffDelayMilliseconds = 2000;
-        const int maxBackoffDelayMilliseconds = 8000;
-        const int deltaBackoffMilliseconds = 2000;
-
+        string stringConnection;
+        int retryCount;
+        int initialInterval;
+        int increment;
+        protected bool IsDisposed = false;
         #endregion
 
         #region Constructor
 
-        public SQLDataAccess(string stringConnection, TimeSpan timeoutCommand)
+        public SQLDataAccess(string connectionString)
         {
-            if (string.IsNullOrEmpty(stringConnection.Trim()))
+            try
             {
-                throw new ArgumentException("No se recibio el parametro", "string databaseConnectionString");
-            }
+                if (string.IsNullOrEmpty(connectionString))
+                    throw new ArgumentException("No se recibio la cadena de conexion");
 
-            this.stringConnection = stringConnection;
-            this.timeoutCommand = timeoutCommand;
-            GenerateConnection();
+                retryCount = int.Parse(ConfigurationManager.AppSettings["retryCount"].ToString());
+                initialInterval = int.Parse(ConfigurationManager.AppSettings["initialInterval"].ToString());
+                increment = int.Parse(ConfigurationManager.AppSettings["increment"].ToString());
+                timeoutCommand = TimeSpan.FromSeconds(int.Parse(ConfigurationManager.AppSettings["DataBaseTimeout"].ToString()));
+                stringConnection = connectionString;
+
+                retryStrategy = new Incremental(retryCount, TimeSpan.FromSeconds(this.initialInterval), TimeSpan.FromSeconds(this.increment));
+                retPol = new RetryPolicy<SqlDatabaseTransientErrorDetectionStrategy>(retryStrategy);
+                GenerateConnection();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
         #endregion
 
@@ -61,11 +71,10 @@ namespace CemexDataAcces
             return command;
         }
 
-        
-        public string EjecutaReaderPolicy(string textoComando, IDataParameter[] parametros)
+        public Tuple<bool, string> EjecutaReaderPolicy(string textoComando, IDataParameter[] parametros)
         {
-            string resp = string.Empty;
-
+            var response = Tuple.Create<bool, string>(false, string.Empty);
+            
             if (string.IsNullOrEmpty(textoComando.Trim()))
             {
                 throw new ArgumentException("No se recibio el parametro", "string commandText");
@@ -73,13 +82,11 @@ namespace CemexDataAcces
 
             IDataReader reader = null;
             IDbCommand command = null;
+            string respSQL = string.Empty;
 
             try
-            {
-                var retryStrategy = new Incremental(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2));
-                var retPol = new RetryPolicy<SqlDatabaseTransientErrorDetectionStrategy>(retryStrategy);
-                
-                this.relConnection = new ReliableSqlConnection(this.stringConnection, retPol, retPol);
+            { 
+                //this.relConnection = new ReliableSqlConnection(this.stringConnection, retPol, retPol);
 
                 if (this.relConnection.State == ConnectionState.Closed)
                 {
@@ -87,20 +94,17 @@ namespace CemexDataAcces
                 }
 
                 RetryPolicy retryPolicyComando = retPol;
-
                 command = PrepareSQLCommandRel(textoComando, CommandType.Text, parametros);
                 command.CommandTimeout = Convert.ToInt32(timeoutCommand.TotalSeconds);
 
                 (retryPolicyComando ?? RetryPolicy.NoRetry).ExecuteAction(() =>
                 {
-                    
                     using (IDataReader rd = command.ExecuteReader(CommandBehavior.CloseConnection))
                     {
                         while (rd.Read())
                         {
-                            resp += rd[2].ToString();
+                            respSQL += rd[2].ToString();
                         }
-
                     }
                 });
 
@@ -113,6 +117,7 @@ namespace CemexDataAcces
                     this.relConnection = null;
                 }
 
+                return new Tuple<bool, string>(false, ex.Message);
                 throw;
             }
             finally
@@ -121,15 +126,16 @@ namespace CemexDataAcces
                 {
                     command.Dispose();
                     command = null;
+                    if (!string.IsNullOrEmpty(respSQL))
+                        response = new Tuple<bool, string>(true, respSQL);
                 }
             }
-            return resp;
+
+            return response;
         }
 
         private void GenerateConnection()
         {
-            var retryStrategy = new Incremental(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2));
-            var retPol = new RetryPolicy<SqlDatabaseTransientErrorDetectionStrategy>(retryStrategy);
             RetryPolicy retryPolicyComando = retPol;
 
             (retryPolicyComando ?? RetryPolicy.NoRetry).ExecuteAction(() =>
@@ -140,9 +146,6 @@ namespace CemexDataAcces
 
         public void OpenRelConnection()
         {
-
-            var retryStrategy = new Incremental(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2));
-            var retPol = new RetryPolicy<SqlDatabaseTransientErrorDetectionStrategy>(retryStrategy);
             RetryPolicy retryPolicyConexion = retPol;
 
             (retryPolicyConexion ?? RetryPolicy.NoRetry).ExecuteAction(() =>
