@@ -9,6 +9,7 @@
     "InitialInterval": 1,
     "Increment": 2,
     "DataBaseTimeout": 5,
+    "TestQuery": "INSERT INTO dbo.PingTable VALUES (1) GO DELETE dbo.PingTable",
     "LogAnalyticsUrl": "https://{0}.ods.opinsights.azure.com/api/logs?api-version=2016-04-01",
     "LogAnalyticsWorkspaceId": "79cd3f82-4d20-4ef0-b461-fee3611fbeca",
     "LogAnalyticsWorkspaceKey": "JJz+CQ9YxUdID+BcUGC9hnzr4rfTeZgRDURuMGTgNeaKbdUXF/++xT3kUdvc1O1n1ZQk9P56fbTJVY8xgDrkHw==",
