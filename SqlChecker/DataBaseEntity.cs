@@ -6,8 +6,7 @@ namespace SqlChecker
 {
     public class DataBaseEntity
     {
-        public string DataBaseName { get; set; }
-        public string DBServer { get; set; }
+        public string ResourceId { get; set; }
         public string DBServerFailoverTarget { get; set; }
         public string DataBaseConnection { get; set; }
         public List<string> WebAppsRelated { get; set; }

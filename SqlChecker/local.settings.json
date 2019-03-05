@@ -1,0 +1,19 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "Schedule": "120",
+    "CriticalSchedule": "20",
+    "RetryCount": 5,
+    "InitialInterval": 1,
+    "Increment": 2,
+    "DataBaseTimeout": 5,
+    "LogAnalyticsUrl": "https://{0}.ods.opinsights.azure.com/api/logs?api-version=2016-04-01",
+    "LogAnalyticsWorkspaceId": "79cd3f82-4d20-4ef0-b461-fee3611fbeca",
+    "LogAnalyticsWorkspaceKey": "JJz+CQ9YxUdID+BcUGC9hnzr4rfTeZgRDURuMGTgNeaKbdUXF/++xT3kUdvc1O1n1ZQk9P56fbTJVY8xgDrkHw==",
+    "AzureFunctionLog": "drbn175Logs",
+    "DataBases": "[{'ResourceId': 'MyDB1','DBServer': 'MyServer1','DBServerFailoverTarget': 'MyServerBackUp1','DataBaseConnection': 'Server=tcp:pgrqasdbsirsi011.database.windows.net,1433;Initial Catalog=pgrqasqlsirsi013;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].','Command': 'Select top 5 * from ApplicantAnnouncements','WebAppsRelated': ['WebApp1','WebApp2','WebAPI']},{'ResourceId': 'MyDB2','DBServer': 'MyServer2','DBServerFailoverTarget': 'MyServerBackUp2','DataBaseConnection': 'Server=tcp:pgrqasdbsirsi011.database.windows.net,1433;Initial Catalog=pgrqasqlsirsi013;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].','Command': 'Select top 5 * from ApplicantAnnouncements','WebAppsRelated': ['WebApp1','WebApp2','WebAPI']}]"
+
+  }
+}

@@ -68,9 +68,9 @@ namespace SqlChecker
                 initialInterval = int.Parse(Environment.GetEnvironmentVariable("InitialInterval"));
                 increment = int.Parse(Environment.GetEnvironmentVariable("Increment"));
                 databaseTimeout = int.Parse(Environment.GetEnvironmentVariable("DatabaseTimeout"));
-                if (db != null && db.DataBaseName != string.Empty)
+                if (db != null && db.ResourceId != string.Empty)
                 {
-                    log.LogInformation($"Access to DB {db.DataBaseName}.");
+                    log.LogInformation($"Access to DB {db.ResourceId}.");
                     if (db.DataBaseConnection == string.Empty || db.Command == string.Empty)
                     {
                         result = new Tuple<bool, string, string>(false, "local.setting.json configuration error", string.Empty);
