@@ -71,7 +71,7 @@ namespace CemexDataAcces
             return command;
         }
 
-        public Tuple<bool, string> EjecutaReaderPolicy(string textoComando, IDataParameter[] parametros)
+        public Tuple<bool, string> ExecuteReaderPolicy(string textoComando, IDataParameter[] parametros)
         {
             var response = Tuple.Create<bool, string>(false, string.Empty);
             

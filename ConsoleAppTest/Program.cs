@@ -29,7 +29,7 @@ namespace ConsoleAppTest
         {
             string cn = @"Server=tcp:pgrqasdbsirsi011.database.windows.net,1433;Initial Catalog=pgrqasqlsirsi013;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].";
             SQLDataAccess acces = new SQLDataAccess(cn);
-            var res = acces.EjecutaReaderPolicy("select top 5 *  from ApplicantAnnouncements", null);
+            var res = acces.ExecuteReaderPolicy("select top 5 *  from ApplicantAnnouncements", null);
 
         }
     }
