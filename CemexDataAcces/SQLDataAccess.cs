@@ -82,8 +82,8 @@ namespace CemexDataAcces
 
             //IDataReader reader = null;
             IDbCommand command = null;
-            string respSQL = string.Empty;
-
+            object returnValue = null;
+            
             try
             { 
                 //this.relConnection = new ReliableSqlConnection(this.stringConnection, retPol, retPol);
@@ -99,13 +99,7 @@ namespace CemexDataAcces
 
                 (retryPolicyComando ?? RetryPolicy.NoRetry).ExecuteAction(() =>
                 {
-                    using (IDataReader rd = command.ExecuteReader(CommandBehavior.CloseConnection))
-                    {
-                        while (rd.Read())
-                        {
-                            respSQL += rd[2].ToString();
-                        }
-                    }
+                    returnValue = command.ExecuteNonQuery();
                 });
 
             }
@@ -126,7 +120,7 @@ namespace CemexDataAcces
                 {
                     command.Dispose();
                     command = null;
-                    if (!string.IsNullOrEmpty(respSQL))
+                    if (returnValue != null)
                         response = new Tuple<bool, string, string>(true, string.Empty,string.Empty);
                 }
             }
