@@ -33,23 +33,22 @@ namespace SqlChecker
                 Tuple<bool, string,string> IsAlive = await context.CallActivityAsync<Tuple<bool, string, string>>("SqlChecker_Query", db);
                 db.IsAlive = IsAlive.Item1;
                 db.Exception = new CustomException() { Message=IsAlive.Item2, StackTrace=IsAlive.Item3 };
-
-                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
-                if (!db.IsAlive)
-                {
-                    db.Retries++;
-                    nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
-                }
-                else
-                {
-                    db.Retries = 0;
-                }
-                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
-                await context.CreateTimer(nextCleanup, CancellationToken.None);
-                //Log Analytics 
-                LogData(db);
-                
+                db.Retries = IsAlive.Item1 ? 0 : db.Retries++;
             }
+
+            int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
+            if (dataBaseEntities.Exists(item=>!item.IsAlive))
+            {
+                nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
+            }
+            DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
+            await context.CreateTimer(nextCleanup, CancellationToken.None);
+            //Log Analytics 
+            foreach (DataBaseEntity db in dataBaseEntities)
+            {
+                LogData(db);
+            }
+
             context.ContinueAsNew(dataBaseEntities);
             
         }
@@ -120,7 +119,7 @@ namespace SqlChecker
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = string.Format("SharedKey {0}:{1}", customerId, hashedString);
 
-            PostData(signature, datestring, json, customerId, LogName);
+           // PostData(signature, datestring, json, customerId, LogName);
         }
 
 

@@ -80,7 +80,7 @@ namespace CemexDataAcces
                 throw new ArgumentException("Parameter expected", "string commandText");
             }
 
-            IDataReader reader = null;
+            //IDataReader reader = null;
             IDbCommand command = null;
             string respSQL = string.Empty;
 
@@ -133,6 +133,8 @@ namespace CemexDataAcces
 
             return response;
         }
+
+
 
         private void GenerateConnection()
         {
