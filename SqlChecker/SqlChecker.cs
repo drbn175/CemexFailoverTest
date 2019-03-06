@@ -46,7 +46,7 @@ namespace SqlChecker
             //Log Analytics 
             foreach (DataBaseEntity db in dataBaseEntities)
             {
-                LogData(db);
+                await LogDataAsync(db);
             }
 
             context.ContinueAsNew(dataBaseEntities);
@@ -107,7 +107,7 @@ namespace SqlChecker
             return starter.CreateCheckStatusResponse(req, instanceId);
         }
 
-        public static void LogData(object req)
+        public static async Task LogDataAsync(object req)
         {
             string customerId = Environment.GetEnvironmentVariable("LogAnalyticsWorkspaceId");
             string sharedKey = Environment.GetEnvironmentVariable("LogAnalyticsWorkspaceKey");
@@ -119,7 +119,7 @@ namespace SqlChecker
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = string.Format("SharedKey {0}:{1}", customerId, hashedString);
 
-           // PostData(signature, datestring, json, customerId, LogName);
+            await PostDataAsync(signature, datestring, json, customerId, LogName);
         }
 
 
@@ -136,7 +136,7 @@ namespace SqlChecker
         }
 
         // Send a request to the POST API endpoint
-        public static void PostData(string signature, string date, string json, string customerId, string LogName)
+        public static async Task PostDataAsync(string signature, string date, string json, string customerId, string LogName)
         {
             // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
             string TimeStampField = string.Empty;
@@ -156,8 +156,8 @@ namespace SqlChecker
                 Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
 
                 System.Net.Http.HttpContent responseContent = response.Result.Content;
-                string result = responseContent.ReadAsStringAsync().Result;
-                Console.WriteLine(string.Format("Return Result: {0}", result));
+                string result = await responseContent.ReadAsStringAsync();
+                //Console.WriteLine(string.Format("Return Result: {0}", result));
             }
             catch (Exception ex)
             {
