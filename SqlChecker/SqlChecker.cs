@@ -21,14 +21,18 @@ namespace SqlChecker
         public static async Task RunOrchestrator(
             [OrchestrationTrigger] DurableOrchestrationContext context)
         {
-            List<DataBaseEntity> dataBaseEntities = context.GetInput<List<DataBaseEntity>>();
+            SqlCheckerSettings sqlCheckerSettings = context.GetInput<SqlCheckerSettings>(); 
 
-            if (dataBaseEntities == null)
+            if (sqlCheckerSettings == null)
             {
-                dataBaseEntities = JsonConvert.DeserializeObject<List<DataBaseEntity>>(Environment.GetEnvironmentVariable("DataBases"));
+                sqlCheckerSettings = new SqlCheckerSettings();
+            }
+            if (sqlCheckerSettings.DataBases == null)
+            {
+                sqlCheckerSettings.DataBases = JsonConvert.DeserializeObject<List<DataBaseEntity>>(Environment.GetEnvironmentVariable("DataBases"));
             }
             
-            foreach(DataBaseEntity db in dataBaseEntities)
+            foreach(DataBaseEntity db in sqlCheckerSettings.DataBases)
             {
                 Tuple<bool, string,string> IsAlive = await context.CallActivityAsync<Tuple<bool, string, string>>("SqlChecker_Query", db);
                 db.IsAlive = IsAlive.Item1;
@@ -37,19 +41,21 @@ namespace SqlChecker
             }
 
             int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
-            if (dataBaseEntities.Exists(item=>!item.IsAlive))
+            if (sqlCheckerSettings.DataBases.Exists(item=>!item.IsAlive))
             {
                 nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
             }
             DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
             await context.CreateTimer(nextCleanup, CancellationToken.None);
             //Log Analytics 
-            foreach (DataBaseEntity db in dataBaseEntities)
+            foreach (DataBaseEntity db in sqlCheckerSettings.DataBases)
             {
-                await LogDataAsync(db);
+               
+                await LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, sqlCheckerSettings.LogAnalyticsWorkspaceKey, db);
+                
             }
 
-            context.ContinueAsNew(dataBaseEntities);
+            context.ContinueAsNew(sqlCheckerSettings);
             
         }
 
@@ -72,7 +78,7 @@ namespace SqlChecker
                     log.LogInformation($"Access to DB {db.ResourceId}.");
                     if (db.DataBaseConnection == string.Empty || db.Command == string.Empty)
                     {
-                        result = new Tuple<bool, string, string>(false, "local.setting.json configuration error", string.Empty);
+                        result = new Tuple<bool, string, string>(false, "Setting configuration error", string.Empty);
                     }
                     else
                     {
@@ -82,13 +88,13 @@ namespace SqlChecker
                 }
                 else
                 {
-                    result = new Tuple<bool, string, string>(false, "local.setting.json configuration error", string.Empty);
+                    result = new Tuple<bool, string, string>(false, "Setting configuration error", string.Empty);
                 }
             }catch(Exception ex)
             {
                 result = new Tuple<bool, string, string>(false, ex.Message, ex.StackTrace);
             }
-            log.LogInformation($"SQL CHeck Result { result.Item1} {result.Item2}. {result.Item3}");
+            log.LogInformation($"SQL Check Result { result.Item1} {result.Item2}. {result.Item3}");
             return result;
         }
 
@@ -107,10 +113,8 @@ namespace SqlChecker
             return starter.CreateCheckStatusResponse(req, instanceId);
         }
 
-        public static async Task LogDataAsync(object req)
+        public static async Task LogDataAsync(string customerId, string sharedKey, DataBaseEntity req)
         {
-            string customerId = Environment.GetEnvironmentVariable("LogAnalyticsWorkspaceId");
-            string sharedKey = Environment.GetEnvironmentVariable("LogAnalyticsWorkspaceKey");
             string LogName = Environment.GetEnvironmentVariable("AzureFunctionLog");
             var json = JsonConvert.SerializeObject(req);
 
@@ -156,8 +160,8 @@ namespace SqlChecker
                 Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
 
                 System.Net.Http.HttpContent responseContent = response.Result.Content;
-                string result = await responseContent.ReadAsStringAsync();
-                //Console.WriteLine(string.Format("Return Result: {0}", result));
+                await responseContent.ReadAsStringAsync();
+                
             }
             catch (Exception ex)
             {

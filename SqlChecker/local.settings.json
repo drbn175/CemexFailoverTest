@@ -9,11 +9,10 @@
     "InitialInterval": 1,
     "Increment": 2,
     "DataBaseTimeout": 5,
-    "TestQuery": "INSERT INTO dbo.PingTable VALUES (1) GO DELETE dbo.PingTable",
     "LogAnalyticsUrl": "https://{0}.ods.opinsights.azure.com/api/logs?api-version=2016-04-01",
-    "LogAnalyticsWorkspaceId": "54c93cbe-4784-4025-a754-6d8f5c5b3808",
-    "LogAnalyticsWorkspaceKey": "n6mX/6/D5eTOyHr0PNTw1+M+W1JyLs47w23TEn1PQUdAN+ZxNj/0MCyAmmvWA8556dzA+1AL+rO3th4Ets002A==",
-    "AzureFunctionLog": "drbn175Logs",
+    "LogAnalyticsWorkspaceId": "5920dfe5-9f9a-4191-a440-47fd53da41cf",
+    "LogAnalyticsWorkspaceKey": "FewYmmO7941ppU1IcpjE0bz4FI3TmizYaIjPJbIR4U4jGQZv6X49AMN7FIYRn8x4rS8ZLbarhQTJ33DMMY+44g==",
+    "AzureFunctionLog": "RecoveryTest",
     "DataBases": "[{'ResourceId': '/subscriptions/c4f9e8b5-7c68-4a08-8383-8e95aadd0ced/resourceGroups/drbn175/providers/Microsoft.Sql/servers/drbn175test/databases/testDB','DBServerFailoverTarget': 'MyServerBackUp1','DataBaseConnection': 'Server=tcp:pgrqasdbsirsi011.database.windows.net,1433;Initial Catalog=pgrqasqlsirsi013;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].','Command': 'INSERT INTO TestAV.PingTable VALUES (1); DELETE TestAV.PingTable ','WebAppsRelated': ['WebApp1','WebApp2','WebAPI']},{'ResourceId': '/subscriptions/c4f9e8b5-7c68-4a08-8383-8e95aadd0ced/resourceGroups/drbn175/providers/Microsoft.Sql/servers/drbn175test/databases/testDB','DBServer': 'MyServer2','DBServerFailoverTarget': 'MyServerBackUp2','DataBaseConnection': 'Server=tcp:pgrdevsdbsirsi010.database.windows.net,1433;Initial Catalog=pgrdevsqlsirsi010;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;','Command': 'Select top 5 * from ApplicantAnnouncements','WebAppsRelated': ['WebApp1','WebApp2','WebAPI']}]"
   }
 }
