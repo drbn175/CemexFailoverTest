@@ -42,9 +42,9 @@ namespace SqlChecker
     public class DataBaseEntity
     {
         public string ResourceId { get; set; }
-        public string DBServerFailoverTarget { get; set; }
+        public string PrincipalFailoverGroup { get; set; }
+        public string SecondaryFailoverGroup { get; set; }
         public string DataBaseConnection { get; set; }
-        public List<string> WebAppsRelated { get; set; }
         public bool IsAlive { get; set; }
         public int Retries { get; set; }
         public string Command { get; set; }
