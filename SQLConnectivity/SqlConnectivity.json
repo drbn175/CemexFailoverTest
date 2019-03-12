@@ -1,6 +1,0 @@
-{
-  "schedule": "0 */5 * * * *",
-  "name": "checkTimer",
-  "type": "timerTrigger",
-  "direction": "in"
-}
