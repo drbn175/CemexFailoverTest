@@ -10,9 +10,9 @@
     "Increment": 2,
     "DataBaseTimeout": 5,
     "LogAnalyticsUrl": "https://{0}.ods.opinsights.azure.com/api/logs?api-version=2016-04-01",
-    "LogAnalyticsWorkspaceId": "5920dfe5-9f9a-4191-a440-47fd53da41cf",
-    "LogAnalyticsWorkspaceKey": "FewYmmO7941ppU1IcpjE0bz4FI3TmizYaIjPJbIR4U4jGQZv6X49AMN7FIYRn8x4rS8ZLbarhQTJ33DMMY+44g==",
+    "LogAnalyticsWorkspaceId": "54c93cbe-4784-4025-a754-6d8f5c5b3808",
+    "LogAnalyticsWorkspaceKey": "n6mX/6/D5eTOyHr0PNTw1+M+W1JyLs47w23TEn1PQUdAN+ZxNj/0MCyAmmvWA8556dzA+1AL+rO3th4Ets002A==",
     "AzureFunctionLog": "RecoveryTest",
-    "DataBases": "[{'ResourceId': '/subscriptions/289e9588-01f5-4913-ac29-a36095e43106/resourceGroups/sqltest/providers/Microsoft.Sql/servers/rjgd80sql1/databases/rjgd80db1','PrincipalFailoverGroup': 'rjgd80sql1.database.windows.net','SecondaryFailoverGroup':'rjgd80sql2.database.windows.net',DataBaseConnection:'Server=tcp:rjgd80fg.database.windows.net,1433;Initial Catalog=rjgd80db1;Persist Security Info=False;User ID=TestUser;Password=CemexGO@sql;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;','Command':'INSERT INTO TestAV.PingTable VALUES (1); DELETE TestAV.PingTable'}]"
+    "DataBases": "[{'ResourceId': '/subscriptions/289e9588-01f5-4913-ac29-a36095e43106/resourceGroups/sqltest/providers/Microsoft.Sql/servers/rjgd80sql1/databases/rjgd80db1','PrincipalFailoverGroup': 'rjgd80sql1.database.windows.net','SecondaryFailoverGroup':'rjgd80sql2.database.windows.net','DataBaseConnection':'Server=tcp:pgrdevsdbsirsi010.database.windows.net,1433;Initial Catalog=pgrdevsqlsirsi010;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;','Command':'INSERT INTO TestAV.PingTable VALUES (1); DELETE TestAV.PingTable'}]"
   }
 }

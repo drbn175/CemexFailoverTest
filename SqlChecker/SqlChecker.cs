@@ -1,14 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using CemexDataAcces;
@@ -21,41 +17,65 @@ namespace SqlChecker
         public static async Task RunOrchestrator(
             [OrchestrationTrigger] DurableOrchestrationContext context)
         {
-            SqlCheckerSettings sqlCheckerSettings = context.GetInput<SqlCheckerSettings>(); 
+            try
+            {
+                SqlCheckerSettings sqlCheckerSettings = context.GetInput<SqlCheckerSettings>();
 
-            if (sqlCheckerSettings == null)
-            {
-                sqlCheckerSettings = new SqlCheckerSettings();
-            }
-            if (sqlCheckerSettings.DataBases == null)
-            {
-                sqlCheckerSettings.DataBases = JsonConvert.DeserializeObject<List<DataBaseEntity>>(Environment.GetEnvironmentVariable("DataBases"));
-            }
-            
-            foreach(DataBaseEntity db in sqlCheckerSettings.DataBases)
-            {
-                Tuple<bool, string,string> IsAlive = await context.CallActivityAsync<Tuple<bool, string, string>>("SqlChecker_Query", db);
-                db.IsAlive = IsAlive.Item1;
-                db.Exception = new CustomException() { Message=IsAlive.Item2, StackTrace=IsAlive.Item3 };
-                db.Retries = IsAlive.Item1 ? 0 : db.Retries++;
-            }
+                if (sqlCheckerSettings == null)
+                {
+                    sqlCheckerSettings = new SqlCheckerSettings();
+                }
+                if (sqlCheckerSettings.DataBases == null)
+                {
+                    sqlCheckerSettings.DataBases = JsonConvert.DeserializeObject<List<DataBaseEntity>>(Environment.GetEnvironmentVariable("DataBases"));
+                }
 
-            int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
-            if (sqlCheckerSettings.DataBases.Exists(item=>!item.IsAlive))
-            {
-                nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
-            }
-            DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
-            await context.CreateTimer(nextCleanup, CancellationToken.None);
-            //Log Analytics 
-            foreach (DataBaseEntity db in sqlCheckerSettings.DataBases)
-            {
-               
-                await LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, sqlCheckerSettings.LogAnalyticsWorkspaceKey, db);
-                
-            }
+                foreach (DataBaseEntity db in sqlCheckerSettings.DataBases)
+                {
+                    Tuple<bool, string, string> IsAlive = await context.CallActivityAsync<Tuple<bool, string, string>>("SqlChecker_Query", db);
+                    db.IsAlive = IsAlive.Item1;
+                    db.Exception = new CustomException() { Message = IsAlive.Item2, StackTrace = IsAlive.Item3 };
+                    if (db.IsAlive)
+                    {
+                        db.Retries = 0;
+                    }
+                    else
+                    {
+                        db.Retries = db.Retries + 1;
+                    }
+                }
 
-            context.ContinueAsNew(sqlCheckerSettings);
+                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
+                if (sqlCheckerSettings.DataBases.Exists(item => !item.IsAlive))
+                {
+                    nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
+                }
+                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
+                await context.CreateTimer(nextCleanup, CancellationToken.None);
+                //Log Analytics 
+                string logName = Environment.GetEnvironmentVariable("AzureFunctionLog");
+                if(logName == null || logName == string.Empty)
+                {
+                    throw new Exception($"Setting configuration error! AzureFunctionLog");
+                }
+                string logAnalyticsUrlFormat = Environment.GetEnvironmentVariable("LogAnalyticsUrl");
+                if (logAnalyticsUrlFormat == null || logAnalyticsUrlFormat == string.Empty)
+                {
+                    throw new Exception($"Setting configuration error! LogAnalyticsUrl");
+                }
+                foreach (DataBaseEntity db in sqlCheckerSettings.DataBases)
+                {
+
+                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, sqlCheckerSettings.LogAnalyticsWorkspaceKey, logName, db);
+
+                }
+
+                context.ContinueAsNew(sqlCheckerSettings);
+            }
+            catch(Exception ex)
+            {
+                context.SetCustomStatus($"Setting configuration error! { ex.Message } { ex.StackTrace }");
+            }
             
         }
 
@@ -78,7 +98,7 @@ namespace SqlChecker
                     log.LogInformation($"Access to DB {db.ResourceId}.");
                     if (db.DataBaseConnection == string.Empty || db.Command == string.Empty)
                     {
-                        result = new Tuple<bool, string, string>(false, "Setting configuration error", string.Empty);
+                        result = new Tuple<bool, string, string>(false, "Setting configuration error", "Check databases JSON");
                     }
                     else
                     {
@@ -88,7 +108,7 @@ namespace SqlChecker
                 }
                 else
                 {
-                    result = new Tuple<bool, string, string>(false, "Setting configuration error", string.Empty);
+                    result = new Tuple<bool, string, string>(false, "Setting configuration error", "Check databases JSON");
                 }
             }catch(Exception ex)
             {
@@ -113,60 +133,6 @@ namespace SqlChecker
             return starter.CreateCheckStatusResponse(req, instanceId);
         }
 
-        public static async Task LogDataAsync(string customerId, string sharedKey, DataBaseEntity req)
-        {
-            string LogName = Environment.GetEnvironmentVariable("AzureFunctionLog");
-            var json = JsonConvert.SerializeObject(req);
-
-            var datestring = DateTime.UtcNow.ToString("r");
-            string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
-            string hashedString = BuildSignature(stringToHash, sharedKey);
-            string signature = string.Format("SharedKey {0}:{1}", customerId, hashedString);
-
-            await PostDataAsync(signature, datestring, json, customerId, LogName);
-        }
-
-
-        public static string BuildSignature(string message, string secret)
-        {
-            var encoding = new System.Text.ASCIIEncoding();
-            byte[] keyByte = Convert.FromBase64String(secret);
-            byte[] messageBytes = encoding.GetBytes(message);
-            using (var hmacsha256 = new HMACSHA256(keyByte))
-            {
-                byte[] hash = hmacsha256.ComputeHash(messageBytes);
-                return Convert.ToBase64String(hash);
-            }
-        }
-
-        // Send a request to the POST API endpoint
-        public static async Task PostDataAsync(string signature, string date, string json, string customerId, string LogName)
-        {
-            // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
-            string TimeStampField = string.Empty;
-            try
-            {
-                string url = string.Format(Environment.GetEnvironmentVariable("LogAnalyticsUrl"),customerId);
-
-                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("Log-Type", LogName);
-                client.DefaultRequestHeaders.Add("Authorization", signature);
-                client.DefaultRequestHeaders.Add("x-ms-date", date);
-                client.DefaultRequestHeaders.Add("time-generated-field", TimeStampField);
-
-                System.Net.Http.HttpContent httpContent = new StringContent(json, Encoding.UTF8);
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
-
-                System.Net.Http.HttpContent responseContent = response.Result.Content;
-                await responseContent.ReadAsStringAsync();
-                
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("API Post Exception: {0}", ex.Message));
-            }
-        }
+       
     }
 }

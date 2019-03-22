@@ -1,12 +1,8 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CemexDataAcces
 {
@@ -71,30 +67,27 @@ namespace CemexDataAcces
             return command;
         }
 
-        public Tuple<bool, string, string> ExecuteReaderPolicy(string textoComando, IDataParameter[] parametros)
+        public Tuple<bool, string, string> ExecuteReaderPolicy(string commandText, IDataParameter[] parametros)
         {
             var response = Tuple.Create<bool, string, string>(false, string.Empty, string.Empty);
             
-            if (string.IsNullOrEmpty(textoComando.Trim()))
+            if (string.IsNullOrEmpty(commandText.Trim()))
             {
                 throw new ArgumentException("Parameter expected", "string commandText");
             }
-
-            //IDataReader reader = null;
             IDbCommand command = null;
             object returnValue = null;
             
             try
             { 
-                //this.relConnection = new ReliableSqlConnection(this.stringConnection, retPol, retPol);
-
+                
                 if (this.relConnection.State == ConnectionState.Closed)
                 {
                     this.OpenRelConnection();
                 }
 
                 RetryPolicy retryPolicyComando = retPol;
-                command = PrepareSQLCommandRel(textoComando, CommandType.Text, parametros);
+                command = PrepareSQLCommandRel(commandText, CommandType.Text, parametros);
                 command.CommandTimeout = Convert.ToInt32(timeoutCommand.TotalSeconds);
 
                 (retryPolicyComando ?? RetryPolicy.NoRetry).ExecuteAction(() =>
@@ -103,19 +96,13 @@ namespace CemexDataAcces
                 });
 
             }
-            catch(Exception ex)
+            finally
             {
                 if (this.relConnection != null && this.relConnection.State == ConnectionState.Open)
                 {
                     this.relConnection.Close();
                     this.relConnection = null;
                 }
-
-                return new Tuple<bool, string, string>(false, ex.Message, ex.StackTrace);
-                throw;
-            }
-            finally
-            {
                 if (command != null)
                 {
                     command.Dispose();
@@ -125,6 +112,62 @@ namespace CemexDataAcces
                 }
             }
 
+            return response;
+        }
+
+        public string ExecuteReader(string commandText, IDataParameter[] parametros)
+        {
+            string response = string.Empty;
+            IEnumerable<Dictionary<string, object>> result;
+
+            if (string.IsNullOrEmpty(commandText.Trim()))
+            {
+                throw new ArgumentException("No se recibio el parametro", "string commandText");
+            }
+            
+            IDbCommand command = null;
+
+            try
+            {
+                var retryStrategy = new Incremental(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2));
+                var retPol = new RetryPolicy<SqlDatabaseTransientErrorDetectionStrategy>(retryStrategy);
+
+                this.relConnection = new ReliableSqlConnection(this.stringConnection, retPol, retPol);
+
+                if (this.relConnection.State == ConnectionState.Closed)
+                {
+                    this.OpenRelConnection();
+                }
+
+                RetryPolicy retryPolicyComando = retPol;
+
+                command = PrepareSQLCommandRel(commandText, CommandType.Text, parametros);
+                command.CommandTimeout = Convert.ToInt32(timeoutCommand.TotalSeconds);
+
+                (retryPolicyComando ?? RetryPolicy.NoRetry).ExecuteAction(() =>
+                {
+
+                    using (IDataReader rd = command.ExecuteReader(CommandBehavior.CloseConnection))
+                    {
+                        result = Serialize(rd);
+                    }
+                    response = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+                });
+
+            }
+            finally
+            {
+                if (this.relConnection != null && this.relConnection.State == ConnectionState.Open)
+                {
+                    this.relConnection.Close();
+                    this.relConnection = null;
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                    command = null;
+                }
+            }
             return response;
         }
 
@@ -157,6 +200,27 @@ namespace CemexDataAcces
                 this.relConnection.Close();
                 this.relConnection = null;
             }
+        }
+
+        private IEnumerable<Dictionary<string, object>> Serialize(IDataReader reader)
+        {
+            var results = new List<Dictionary<string, object>>();
+            var cols = new List<string>();
+            for (var i = 0; i < reader.FieldCount; i++)
+                cols.Add(reader.GetName(i));
+
+            while (reader.Read())
+                results.Add(SerializeRow(cols, reader));
+
+            return results;
+        }
+        private Dictionary<string, object> SerializeRow(IEnumerable<string> cols,
+                                                        IDataReader reader)
+        {
+            var result = new Dictionary<string, object>();
+            foreach (var col in cols)
+                result.Add(col, reader[col]);
+            return result;
         }
         #endregion
 
