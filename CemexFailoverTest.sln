@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlChecker", "SqlChecker\Sq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CemexDataAccess", "CemexDataAcces\CemexDataAccess.csproj", "{47834C04-928D-4A79-A253-A8FC29705DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTransactionWatcher", "SqlTransactionWatcher\SqlTransactionWatcher.csproj", "{7B59E841-8379-4384-BAD3-D58364BB4CDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTransactionWatcher", "SqlTransactionWatcher\SqlTransactionWatcher.csproj", "{7B59E841-8379-4384-BAD3-D58364BB4CDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyticsHelper", "LogAnalyticsHelper\LogAnalyticsHelper.csproj", "{48FE851D-ED44-4DCB-A866-D05DB2D6D3E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpRequestHelper", "HttpRequestHelper\HttpRequestHelper.csproj", "{53C77395-3DDE-4001-B37C-239FBDB67D76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppWatcher", "WebAppWatcher\WebAppWatcher.csproj", "{6C058B1C-D0D9-465D-A543-4AC974C07ED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppWatcher", "WebAppWatcher\WebAppWatcher.csproj", "{6C058B1C-D0D9-465D-A543-4AC974C07ED7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,7 +50,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {60014B29-2EB2-43B5-8620-6A2563F85A9B}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {60014B29-2EB2-43B5-8620-6A2563F85A9B}
 	EndGlobalSection
 EndGlobal

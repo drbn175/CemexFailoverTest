@@ -29,16 +29,6 @@ namespace WebAppWatcher
                 {
                     WebAppWatcherSettings.WebApis = JsonConvert.DeserializeObject<List<WebApiEntity>>(Environment.GetEnvironmentVariable("DataBases"));
                 }
-
-                foreach (WebApiEntity webapp in WebAppWatcherSettings.WebApis)
-                {
-                    //Logic to identify webapp failing
-                }
-
-                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
-                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
-                await context.CreateTimer(nextCleanup, CancellationToken.None);
-
                 //Log Analytics 
                 string logName = Environment.GetEnvironmentVariable("AzureFunctionLog");
                 if (logName == null || logName == string.Empty)
@@ -52,10 +42,14 @@ namespace WebAppWatcher
                 }
                 foreach (WebApiEntity webapp in WebAppWatcherSettings.WebApis)
                 {
+                    //Logic to identify webapp failing
 
                     await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(WebAppWatcherSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, WebAppWatcherSettings.LogAnalyticsWorkspaceKey, logName, webapp);
 
                 }
+                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
+                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
+                await context.CreateTimer(nextCleanup, CancellationToken.None);
                 context.ContinueAsNew(WebAppWatcherSettings);
             }
             catch (Exception ex)

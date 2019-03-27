@@ -31,27 +31,6 @@ namespace SqlTransactionWatcher
                 {
                     SqlTransactionWatcherSettings.DataBases = JsonConvert.DeserializeObject<List<DataBaseTransactionEntity>>(Environment.GetEnvironmentVariable("DataBases"));
                 }
-
-                foreach (DataBaseTransactionEntity db in SqlTransactionWatcherSettings.DataBases)
-                {
-                    IEnumerable<Dictionary<string, object>> blocked = await context.CallActivityAsync<IEnumerable<Dictionary<string, object>>>("SqlTransactionWatcher_Check", db);
-                    if(blocked.Count() > 0)
-                    {
-                        db.IsBlocked = true; 
-                       foreach(Dictionary<string,object> record in blocked)
-                        {
-                            record.Add("ResourceId", db.ResourceId);
-                            record.Add("DataBaseConnection", db.DataBaseConnection);
-                            record.Add("IsBlocked", db.IsBlocked);
-                        }
-                        db.Records = blocked.ToList();
-                    }
-                }
-
-                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
-                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
-                await context.CreateTimer(nextCleanup, CancellationToken.None);
-
                 //Log Analytics 
                 string logName = Environment.GetEnvironmentVariable("AzureFunctionLog");
                 if (logName == null || logName == string.Empty)
@@ -65,10 +44,22 @@ namespace SqlTransactionWatcher
                 }
                 foreach (DataBaseTransactionEntity db in SqlTransactionWatcherSettings.DataBases)
                 {
-
-                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(SqlTransactionWatcherSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, SqlTransactionWatcherSettings.LogAnalyticsWorkspaceKey, logName, db.Records);
-
+                    IEnumerable<Dictionary<string, object>> blocked = await context.CallActivityAsync<IEnumerable<Dictionary<string, object>>>("SqlTransactionWatcher_Check", db);
+                    if(blocked.Count() > 0)
+                    {
+                        db.IsBlocked = true; 
+                       foreach(Dictionary<string,object> record in blocked)
+                        {
+                            record.Add("ResourceId", db.ResourceId);
+                            record.Add("DataBaseConnection", db.DataBaseConnection);
+                            record.Add("IsBlocked", db.IsBlocked);
+                        }
+                        await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(SqlTransactionWatcherSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, SqlTransactionWatcherSettings.LogAnalyticsWorkspaceKey, logName, blocked.ToList());
+                    }
                 }
+                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
+                DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
+                await context.CreateTimer(nextCleanup, CancellationToken.None);
                 context.ContinueAsNew(SqlTransactionWatcherSettings);
             }
             catch(Exception ex)

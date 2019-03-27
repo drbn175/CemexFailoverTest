@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -86,6 +87,20 @@ namespace HttpRequestHelper
             using (StreamReader reader = new StreamReader(stream))
             {
                 return await reader.ReadToEndAsync();
+            }
+        }
+
+
+        public static async Task<HttpResponseMessage> AuthenticateBasicAsync(string urlLogin, string username, string password)
+        {
+
+            using (HttpClient client = new HttpClient())
+            {
+
+                var byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", username, password));
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+                return await client.GetAsync(urlLogin);
             }
         }
     }

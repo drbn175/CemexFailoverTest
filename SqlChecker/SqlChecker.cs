@@ -20,7 +20,7 @@ namespace SqlChecker
             try
             {
                 SqlCheckerSettings sqlCheckerSettings = context.GetInput<SqlCheckerSettings>();
-
+                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
                 if (sqlCheckerSettings == null)
                 {
                     sqlCheckerSettings = new SqlCheckerSettings();
@@ -28,6 +28,17 @@ namespace SqlChecker
                 if (sqlCheckerSettings.DataBases == null)
                 {
                     sqlCheckerSettings.DataBases = JsonConvert.DeserializeObject<List<DataBaseEntity>>(Environment.GetEnvironmentVariable("DataBases"));
+                }
+                //Log Analytics 
+                string logName = Environment.GetEnvironmentVariable("AzureFunctionLog");
+                if (logName == null || logName == string.Empty)
+                {
+                    throw new Exception($"Setting configuration error! AzureFunctionLog");
+                }
+                string logAnalyticsUrlFormat = Environment.GetEnvironmentVariable("LogAnalyticsUrl");
+                if (logAnalyticsUrlFormat == null || logAnalyticsUrlFormat == string.Empty)
+                {
+                    throw new Exception($"Setting configuration error! LogAnalyticsUrl");
                 }
 
                 foreach (DataBaseEntity db in sqlCheckerSettings.DataBases)
@@ -43,33 +54,16 @@ namespace SqlChecker
                     {
                         db.Retries = db.Retries + 1;
                     }
-                }
 
-                int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
+                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, sqlCheckerSettings.LogAnalyticsWorkspaceKey, logName, db);
+
+                }
                 if (sqlCheckerSettings.DataBases.Exists(item => !item.IsAlive))
                 {
                     nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("CriticalSchedule"));
                 }
                 DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
                 await context.CreateTimer(nextCleanup, CancellationToken.None);
-                //Log Analytics 
-                string logName = Environment.GetEnvironmentVariable("AzureFunctionLog");
-                if(logName == null || logName == string.Empty)
-                {
-                    throw new Exception($"Setting configuration error! AzureFunctionLog");
-                }
-                string logAnalyticsUrlFormat = Environment.GetEnvironmentVariable("LogAnalyticsUrl");
-                if (logAnalyticsUrlFormat == null || logAnalyticsUrlFormat == string.Empty)
-                {
-                    throw new Exception($"Setting configuration error! LogAnalyticsUrl");
-                }
-                foreach (DataBaseEntity db in sqlCheckerSettings.DataBases)
-                {
-
-                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, sqlCheckerSettings.LogAnalyticsWorkspaceKey, logName, db);
-
-                }
-
                 context.ContinueAsNew(sqlCheckerSettings);
             }
             catch(Exception ex)

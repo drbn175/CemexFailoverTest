@@ -45,5 +45,6 @@ namespace WebAppWatcher
         public string ResourceId { get; set; }
         public string Url { get; set; }
         public bool IsDown { get; set; }
+        
     }
 }
