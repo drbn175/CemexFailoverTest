@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://edithistory.apiservice.bullhorn.com/" targetNamespace="http://edithistory.apiservice.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="apiEditHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="entityId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="fieldChanges" nillable="true" type="tns:apiEditHistoryFieldChange" />
+      <xs:element minOccurs="0" name="modifyingPersonId" type="xs:int" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apiEditHistoryFieldChange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="columnName" type="xs:string" />
+      <xs:element minOccurs="0" name="newValue" type="xs:string" />
+      <xs:element minOccurs="0" name="oldValue" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

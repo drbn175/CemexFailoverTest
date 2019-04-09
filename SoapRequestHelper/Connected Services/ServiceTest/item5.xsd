@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://task.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://task.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="taskDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:taskDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="taskDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="clientContactID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateCompleted" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="isCompleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isPrivate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isSystemTask" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="jobSubmissionID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="notificationMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="parentTaskID" type="xs:int" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceDayBits" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceFrequency" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceMax" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceMonthBits" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceStyle" type="xs:string" />
+          <xs:element minOccurs="0" name="recurrenceType" type="xs:string" />
+          <xs:element minOccurs="0" name="subject" type="xs:string" />
+          <xs:element minOccurs="0" name="taskID" type="xs:int" />
+          <xs:element minOccurs="0" name="taskUUID" type="xs:string" />
+          <xs:element minOccurs="0" name="timeZoneID" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="taskApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="childTasks" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="taskApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="taskID" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="clientContactID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateBegin" />
+      <xs:enumeration value="dateCompleted" />
+      <xs:enumeration value="dateEnd" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="isCompleted" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isPrivate" />
+      <xs:enumeration value="isSystemTask" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="jobSubmissionID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="notificationMinutes" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="parentTaskID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="recurrenceDayBits" />
+      <xs:enumeration value="recurrenceFrequency" />
+      <xs:enumeration value="recurrenceMax" />
+      <xs:enumeration value="recurrenceMonthBits" />
+      <xs:enumeration value="recurrenceStyle" />
+      <xs:enumeration value="recurrenceType" />
+      <xs:enumeration value="subject" />
+      <xs:enumeration value="taskUUID" />
+      <xs:enumeration value="timeZoneID" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

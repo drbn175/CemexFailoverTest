@@ -14,7 +14,10 @@ namespace HttpRequestHelper
         public static string Get(string uri, string header)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Headers.Add(header);
+            if (header != null && header != string.Empty)
+            {
+                request.Headers.Add(header);
+            }
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
@@ -28,7 +31,10 @@ namespace HttpRequestHelper
         public static async Task<string> GetAsync(string uri, string header)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Headers.Add(header);
+            if (header != null && header != string.Empty)
+            {
+                request.Headers.Add(header);
+            }
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
             using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
@@ -71,7 +77,10 @@ namespace HttpRequestHelper
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Headers.Add(header);
+            if (header != null && header != string.Empty)
+            {
+                request.Headers.Add(header);
+            }
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             request.ContentLength = dataBytes.Length;
             request.ContentType = contentType;

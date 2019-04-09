@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+
 
 namespace WebAppWatcher
 {
@@ -19,38 +22,34 @@ namespace WebAppWatcher
         {
             try
             {
-                WebAppWatcherSettings WebAppWatcherSettings = context.GetInput<WebAppWatcherSettings>();
+                WebAppWatcherSettings webAppWatcherSettings = context.GetInput<WebAppWatcherSettings>();
 
-                if (WebAppWatcherSettings == null)
+                if (webAppWatcherSettings == null)
                 {
-                    WebAppWatcherSettings = new WebAppWatcherSettings();
+                    webAppWatcherSettings = new WebAppWatcherSettings();
                 }
-                if (WebAppWatcherSettings.WebApis == null)
+                if (webAppWatcherSettings.WebApis == null)
                 {
-                    WebAppWatcherSettings.WebApis = JsonConvert.DeserializeObject<List<WebApiEntity>>(Environment.GetEnvironmentVariable("DataBases"));
+                    webAppWatcherSettings.WebApis = JsonConvert.DeserializeObject<List<WebApiEntity>>(Environment.GetEnvironmentVariable("WebApis"));
                 }
                 //Log Analytics 
-                string logName = Environment.GetEnvironmentVariable("AzureFunctionLog");
-                if (logName == null || logName == string.Empty)
+                webAppWatcherSettings.LogName = Environment.GetEnvironmentVariable("AzureFunctionLog");
+                if (webAppWatcherSettings.LogName == null || webAppWatcherSettings.LogName == string.Empty)
                 {
                     throw new Exception($"Setting configuration error! AzureFunctionLog");
                 }
-                string logAnalyticsUrlFormat = Environment.GetEnvironmentVariable("LogAnalyticsUrl");
-                if (logAnalyticsUrlFormat == null || logAnalyticsUrlFormat == string.Empty)
+                webAppWatcherSettings.LogAnalyticsUrlFormat = Environment.GetEnvironmentVariable("LogAnalyticsUrl");
+                if (webAppWatcherSettings.LogAnalyticsUrlFormat == null || webAppWatcherSettings.LogAnalyticsUrlFormat == string.Empty)
                 {
                     throw new Exception($"Setting configuration error! LogAnalyticsUrl");
                 }
-                foreach (WebApiEntity webapp in WebAppWatcherSettings.WebApis)
-                {
-                    //Logic to identify webapp failing
-
-                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(WebAppWatcherSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, WebAppWatcherSettings.LogAnalyticsWorkspaceKey, logName, webapp);
-
-                }
+                //await webAppWatcherSettings.LoginAsync();
+                await context.CallActivityAsync<string>("WebAppWatcher_Check", webAppWatcherSettings);
+                
                 int nextCleanUpSeconds = System.Convert.ToInt32(Environment.GetEnvironmentVariable("Schedule"));
                 DateTime nextCleanup = context.CurrentUtcDateTime.AddSeconds(nextCleanUpSeconds);
                 await context.CreateTimer(nextCleanup, CancellationToken.None);
-                context.ContinueAsNew(WebAppWatcherSettings);
+                context.ContinueAsNew(webAppWatcherSettings);
             }
             catch (Exception ex)
             {
@@ -58,11 +57,55 @@ namespace WebAppWatcher
             }
         }
 
-        [FunctionName("WebAppWatcher_Hello")]
-        public static string SayHello([ActivityTrigger] string name, ILogger log)
+        [FunctionName("WebAppWatcher_Check")]
+        public static async Task WebAppWatcher_Check([ActivityTrigger] WebAppWatcherSettings webAppWatcherSettings,  ILogger log)
         {
-            log.LogInformation($"Saying hello to {name}.");
-            return $"Hello {name}!";
+            string result = null;
+            string statusCode = null;
+            DateTime time;
+            TimeSpan took;
+            foreach (WebApiEntity webapp in webAppWatcherSettings.WebApis)
+            {
+                //Logic to identify webapp failing
+                try
+                {
+                    time = DateTime.Now;
+                    log.LogInformation($"Saying hello to {webapp.Url}.");
+                    //if (webapp.IsSoap)
+                    //{
+                    //    SoapRequestHelper.SoapRequestHelper.TestMethod();
+                    //}
+                    //else
+                    //{
+                        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapp.Url);
+                        request.CookieContainer = new CookieContainer();
+                        foreach (WebApiCookie c in webAppWatcherSettings.CustomCookies)
+                        {
+                            request.CookieContainer.Add(new Cookie(c.name, c.value, string.Empty, new Uri(webapp.Url).Host));
+                        }
+
+                        request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+                        using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                        using (Stream stream = response.GetResponseStream())
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            result = await reader.ReadToEndAsync();
+                            statusCode = response.StatusCode.ToString();
+                        }
+
+                        took = DateTime.Now.Subtract(time);
+                    //}
+                   
+
+                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(webAppWatcherSettings.LogAnalyticsWorkspaceId, webAppWatcherSettings.LogAnalyticsUrlFormat, webAppWatcherSettings.LogAnalyticsWorkspaceKey, webAppWatcherSettings.LogName, new { webapp.Url, Duration= took.Milliseconds, OuterMessage = "Success", StatusCode= statusCode });
+                }
+                catch (Exception ex)
+                {
+                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(webAppWatcherSettings.LogAnalyticsWorkspaceId, webAppWatcherSettings.LogAnalyticsUrlFormat, webAppWatcherSettings.LogAnalyticsWorkspaceKey, webAppWatcherSettings.LogName, new { webapp.Url, Duration = -1, OuterMessage = ex.Message, StatusCode = statusCode });
+                }
+            }
+           
         }
 
         [FunctionName("WebAppWatcher_HttpStart")]

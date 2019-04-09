@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns1="http://emb.entity.bullhorn.com/" xmlns:tns="http://candidate.entity.bullhorn.com/" xmlns:ns2="http://user.entity.bullhorn.com/" xmlns:ns3="http://entity.bullhorn.com/" targetNamespace="http://candidate.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=22" namespace="http://emb.entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=23" namespace="http://user.entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="candidateDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns2:personDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="certifications" type="xs:string" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="companyName" type="xs:string" />
+          <xs:element minOccurs="0" name="companyURL" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock1" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock2" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock3" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock4" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock5" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateAvailable" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateAvailableEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateI9Expiration" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateNextCall" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dayRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="dayRateLow" type="xs:decimal" />
+          <xs:element minOccurs="0" name="degreeList" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="desiredLocations" type="xs:string" />
+          <xs:element minOccurs="0" name="disability" type="xs:string" />
+          <xs:element minOccurs="0" name="educationDegree" type="xs:string" />
+          <xs:element minOccurs="0" name="employeeType" type="xs:string" />
+          <xs:element minOccurs="0" name="employmentPreference" type="xs:string" />
+          <xs:element minOccurs="0" name="ethnicity" type="xs:string" />
+          <xs:element minOccurs="0" name="experience" type="xs:int" />
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element minOccurs="0" name="federalAddtionalWitholdingsAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="federalExemptions" type="xs:int" />
+          <xs:element minOccurs="0" name="federalFilingStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="gender" type="xs:string" />
+          <xs:element minOccurs="0" name="hourlyRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="hourlyRateLow" type="xs:decimal" />
+          <xs:element minOccurs="0" name="i9OnFile" type="xs:int" />
+          <xs:element minOccurs="0" name="isEditable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="linkedPersonID" type="xs:int" />
+          <xs:element minOccurs="0" name="localAddtionalWitholdingsAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="localExemptions" type="xs:int" />
+          <xs:element minOccurs="0" name="localFilingStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="localTaxCode" type="xs:string" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="numCategories" type="xs:int" />
+          <xs:element minOccurs="0" name="numOwners" type="xs:int" />
+          <xs:element minOccurs="0" name="ownerCorporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="paperWorkOnFile" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="preferredContact" type="xs:string" />
+          <xs:element minOccurs="0" name="recentClientList" type="xs:string" />
+          <xs:element minOccurs="0" name="referredBy" type="xs:string" />
+          <xs:element minOccurs="0" name="referredByPersonID" type="xs:int" />
+          <xs:element minOccurs="0" name="salary" type="xs:decimal" />
+          <xs:element minOccurs="0" name="salaryLow" type="xs:decimal" />
+          <xs:element minOccurs="0" name="secondaryAddress" type="ns1:address" />
+          <xs:element minOccurs="0" name="skillSet" type="xs:string" />
+          <xs:element minOccurs="0" name="source" type="xs:string" />
+          <xs:element minOccurs="0" name="ssn" type="xs:string" />
+          <xs:element minOccurs="0" name="stateAddtionalWitholdingsAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stateExemptions" type="xs:int" />
+          <xs:element minOccurs="0" name="stateFilingStatus" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="taxID" type="xs:string" />
+          <xs:element minOccurs="0" name="taxState" type="xs:string" />
+          <xs:element minOccurs="0" name="travelLimit" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+          <xs:element minOccurs="0" name="veteran" type="xs:string" />
+          <xs:element minOccurs="0" name="willRelocate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="workAuthorized" type="xs:boolean" />
+          <xs:element minOccurs="0" name="workPhone" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateAssessmentDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateAssessmentDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateAssessmentDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addingUserID" type="xs:int" />
+          <xs:element minOccurs="0" name="assessmentCode" type="xs:string" />
+          <xs:element minOccurs="0" name="assessmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="assessmentName" type="xs:string" />
+          <xs:element minOccurs="0" name="assessmentSystemID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="resultCode" type="xs:string" />
+          <xs:element minOccurs="0" name="resultDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="scoreValue" type="xs:string" />
+          <xs:element minOccurs="0" name="sessionCode" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateAssessmentSystemDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateAssessmentSystemDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateAssessmentSystemDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assessmentSystemID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateCertificationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateCertificationDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateCertificationDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="boardCertification" type="xs:string" />
+          <xs:element minOccurs="0" name="candidateCertificationID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="certificationID" type="xs:int" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="compact" type="xs:int" />
+          <xs:element minOccurs="0" name="copyOnFile" type="xs:int" />
+          <xs:element minOccurs="0" name="dateCertified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateExpiration" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="issuedBy" type="xs:string" />
+          <xs:element minOccurs="0" name="licenseNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="licenseType" type="xs:string" />
+          <xs:element minOccurs="0" name="location" type="xs:string" />
+          <xs:element minOccurs="0" name="modifyingUserID" type="xs:int" />
+          <xs:element minOccurs="0" name="results" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateEducationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateEducationDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateEducationDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="candidateEducationID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="certification" type="xs:string" />
+          <xs:element minOccurs="0" name="city" type="xs:string" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="customDate1" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate2" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate3" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate4" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate5" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customFloat1" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat2" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat3" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat4" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat5" type="xs:double" />
+          <xs:element minOccurs="0" name="customInt1" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt2" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt3" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt4" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt5" type="xs:int" />
+          <xs:element minOccurs="0" name="customText1" type="xs:string" />
+          <xs:element minOccurs="0" name="customText2" type="xs:string" />
+          <xs:element minOccurs="0" name="customText3" type="xs:string" />
+          <xs:element minOccurs="0" name="customText4" type="xs:string" />
+          <xs:element minOccurs="0" name="customText5" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock1" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock2" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock3" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="degree" type="xs:string" />
+          <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="expirationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="gpa" type="xs:double" />
+          <xs:element minOccurs="0" name="graduationDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="major" type="xs:string" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="school" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="state" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateReferenceDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateReferenceDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateReferenceDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateReferenceID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="clientCorporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="companyName" type="xs:string" />
+          <xs:element minOccurs="0" name="customDate1" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate2" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate3" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate4" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate5" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customFloat1" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat2" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat3" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat4" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat5" type="xs:double" />
+          <xs:element minOccurs="0" name="customInt1" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt2" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt3" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt4" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt5" type="xs:int" />
+          <xs:element minOccurs="0" name="customMigrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="customText1" type="xs:string" />
+          <xs:element minOccurs="0" name="customText2" type="xs:string" />
+          <xs:element minOccurs="0" name="customText3" type="xs:string" />
+          <xs:element minOccurs="0" name="customText4" type="xs:string" />
+          <xs:element minOccurs="0" name="customText5" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock1" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock2" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock3" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="employmentEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="employmentStart" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="referenceClientContactID" type="xs:int" />
+          <xs:element minOccurs="0" name="referenceEmail" type="xs:string" />
+          <xs:element minOccurs="0" name="referenceFirstName" type="xs:string" />
+          <xs:element minOccurs="0" name="referenceLastName" type="xs:string" />
+          <xs:element minOccurs="0" name="referencePhone" type="xs:string" />
+          <xs:element minOccurs="0" name="referenceTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="yearsKnown" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateReferenceQuestionDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateReferenceQuestionDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateReferenceQuestionDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="candidateReferenceQuestionID" type="xs:int" />
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="enabled" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="questionText" type="xs:string" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateReferenceResponseDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateReferenceResponseDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateReferenceResponseDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="questionID" type="xs:int" />
+          <xs:element minOccurs="0" name="referenceID" type="xs:int" />
+          <xs:element minOccurs="0" name="responseText" type="xs:string" />
+          <xs:element minOccurs="0" name="userReferenceResponseID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateSourceDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateSourceDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateSourceDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="accountNumber" type="xs:string" />
+          <xs:element minOccurs="0" name="address" type="ns1:addressWithoutCountry" />
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateSourceID" type="xs:int" />
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="fax" type="xs:string" />
+          <xs:element minOccurs="0" name="fee" type="xs:decimal" />
+          <xs:element minOccurs="0" name="feeType" type="xs:string" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="phone" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateWorkHistoryDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:candidateWorkHistoryDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="candidateWorkHistoryDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bonus" type="xs:double" />
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="candidateWorkHistoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="clientCorporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="commission" type="xs:double" />
+          <xs:element minOccurs="0" name="companyName" type="xs:string" />
+          <xs:element minOccurs="0" name="customDate1" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate2" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate3" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate4" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customDate5" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="customFloat1" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat2" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat3" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat4" type="xs:double" />
+          <xs:element minOccurs="0" name="customFloat5" type="xs:double" />
+          <xs:element minOccurs="0" name="customInt1" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt2" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt3" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt4" type="xs:int" />
+          <xs:element minOccurs="0" name="customInt5" type="xs:int" />
+          <xs:element minOccurs="0" name="customText1" type="xs:string" />
+          <xs:element minOccurs="0" name="customText2" type="xs:string" />
+          <xs:element minOccurs="0" name="customText3" type="xs:string" />
+          <xs:element minOccurs="0" name="customText4" type="xs:string" />
+          <xs:element minOccurs="0" name="customText5" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock1" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock2" type="xs:string" />
+          <xs:element minOccurs="0" name="customTextBlock3" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isLastJob" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="salary1" type="xs:decimal" />
+          <xs:element minOccurs="0" name="salary2" type="xs:decimal" />
+          <xs:element minOccurs="0" name="salaryType" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="terminationReason" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sendoutDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:sendoutDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="sendoutDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns3:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="candidateID" type="xs:int" />
+          <xs:element minOccurs="0" name="clientContactID" type="xs:int" />
+          <xs:element minOccurs="0" name="clientCorporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="isRead" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="sendoutID" type="xs:int" />
+          <xs:element minOccurs="0" name="userID" type="xs:int" />
+          <xs:element minOccurs="0" name="userMessageID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="candidateApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="businessSectors" />
+      <xs:enumeration value="categories" />
+      <xs:enumeration value="certificationList" />
+      <xs:enumeration value="primarySkills" />
+      <xs:enumeration value="secondaryOwners" />
+      <xs:enumeration value="secondarySkills" />
+      <xs:enumeration value="specialties" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="userID" />
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="certifications" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="companyName" />
+      <xs:enumeration value="companyURL" />
+      <xs:enumeration value="customTextBlock1" />
+      <xs:enumeration value="customTextBlock2" />
+      <xs:enumeration value="customTextBlock3" />
+      <xs:enumeration value="customTextBlock4" />
+      <xs:enumeration value="customTextBlock5" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateAvailable" />
+      <xs:enumeration value="dateAvailableEnd" />
+      <xs:enumeration value="dateI9Expiration" />
+      <xs:enumeration value="dateNextCall" />
+      <xs:enumeration value="dateOfBirth" />
+      <xs:enumeration value="dayRate" />
+      <xs:enumeration value="dayRateLow" />
+      <xs:enumeration value="degreeList" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="desiredLocations" />
+      <xs:enumeration value="disability" />
+      <xs:enumeration value="educationDegree" />
+      <xs:enumeration value="employeeType" />
+      <xs:enumeration value="employmentPreference" />
+      <xs:enumeration value="ethnicity" />
+      <xs:enumeration value="experience" />
+      <xs:enumeration value="externalID" />
+      <xs:enumeration value="federalAddtionalWitholdingsAmount" />
+      <xs:enumeration value="federalExemptions" />
+      <xs:enumeration value="federalFilingStatus" />
+      <xs:enumeration value="gender" />
+      <xs:enumeration value="hourlyRate" />
+      <xs:enumeration value="hourlyRateLow" />
+      <xs:enumeration value="i9OnFile" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isEditable" />
+      <xs:enumeration value="linkedPersonID" />
+      <xs:enumeration value="localAddtionalWitholdingsAmount" />
+      <xs:enumeration value="localExemptions" />
+      <xs:enumeration value="localFilingStatus" />
+      <xs:enumeration value="localTaxCode" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="numCategories" />
+      <xs:enumeration value="numOwners" />
+      <xs:enumeration value="ownerCorporationID" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="paperWorkOnFile" />
+      <xs:enumeration value="password" />
+      <xs:enumeration value="preferredContact" />
+      <xs:enumeration value="recentClientList" />
+      <xs:enumeration value="referredBy" />
+      <xs:enumeration value="referredByPersonID" />
+      <xs:enumeration value="salary" />
+      <xs:enumeration value="salaryLow" />
+      <xs:enumeration value="secondaryAddress" />
+      <xs:enumeration value="skillSet" />
+      <xs:enumeration value="source" />
+      <xs:enumeration value="ssn" />
+      <xs:enumeration value="stateAddtionalWitholdingsAmount" />
+      <xs:enumeration value="stateExemptions" />
+      <xs:enumeration value="stateFilingStatus" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="taxID" />
+      <xs:enumeration value="taxState" />
+      <xs:enumeration value="travelLimit" />
+      <xs:enumeration value="type" />
+      <xs:enumeration value="veteran" />
+      <xs:enumeration value="willRelocate" />
+      <xs:enumeration value="workAuthorized" />
+      <xs:enumeration value="workPhone" />
+      <xs:enumeration value="address" />
+      <xs:enumeration value="customDate1" />
+      <xs:enumeration value="customDate2" />
+      <xs:enumeration value="customDate3" />
+      <xs:enumeration value="customFloat1" />
+      <xs:enumeration value="customFloat2" />
+      <xs:enumeration value="customFloat3" />
+      <xs:enumeration value="customInt1" />
+      <xs:enumeration value="customInt2" />
+      <xs:enumeration value="customInt3" />
+      <xs:enumeration value="customText1" />
+      <xs:enumeration value="customText10" />
+      <xs:enumeration value="customText11" />
+      <xs:enumeration value="customText12" />
+      <xs:enumeration value="customText13" />
+      <xs:enumeration value="customText14" />
+      <xs:enumeration value="customText15" />
+      <xs:enumeration value="customText16" />
+      <xs:enumeration value="customText17" />
+      <xs:enumeration value="customText18" />
+      <xs:enumeration value="customText19" />
+      <xs:enumeration value="customText2" />
+      <xs:enumeration value="customText20" />
+      <xs:enumeration value="customText3" />
+      <xs:enumeration value="customText4" />
+      <xs:enumeration value="customText5" />
+      <xs:enumeration value="customText6" />
+      <xs:enumeration value="customText7" />
+      <xs:enumeration value="customText8" />
+      <xs:enumeration value="customText9" />
+      <xs:enumeration value="dateLastComment" />
+      <xs:enumeration value="email" />
+      <xs:enumeration value="email2" />
+      <xs:enumeration value="email3" />
+      <xs:enumeration value="fax" />
+      <xs:enumeration value="fax2" />
+      <xs:enumeration value="fax3" />
+      <xs:enumeration value="firstName" />
+      <xs:enumeration value="isDayLightSavings" />
+      <xs:enumeration value="isLockedOut" />
+      <xs:enumeration value="lastName" />
+      <xs:enumeration value="massMailOptOut" />
+      <xs:enumeration value="middleName" />
+      <xs:enumeration value="mobile" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="namePrefix" />
+      <xs:enumeration value="nameSuffix" />
+      <xs:enumeration value="nickName" />
+      <xs:enumeration value="occupation" />
+      <xs:enumeration value="pager" />
+      <xs:enumeration value="phone" />
+      <xs:enumeration value="phone2" />
+      <xs:enumeration value="phone3" />
+      <xs:enumeration value="smsOptIn" />
+      <xs:enumeration value="timeZoneOffsetEST" />
+      <xs:enumeration value="userTypeID" />
+      <xs:enumeration value="username" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateAssessmentApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="assessmentID" />
+      <xs:enumeration value="addingUserID" />
+      <xs:enumeration value="assessmentCode" />
+      <xs:enumeration value="assessmentName" />
+      <xs:enumeration value="assessmentSystemID" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="resultCode" />
+      <xs:enumeration value="resultDate" />
+      <xs:enumeration value="scoreValue" />
+      <xs:enumeration value="sessionCode" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateAssessmentSystemApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="assessments" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateAssessmentSystemApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="assessmentSystemID" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateCertificationApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidateCertificationID" />
+      <xs:enumeration value="boardCertification" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="certificationID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="compact" />
+      <xs:enumeration value="copyOnFile" />
+      <xs:enumeration value="dateCertified" />
+      <xs:enumeration value="dateExpiration" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="issuedBy" />
+      <xs:enumeration value="licenseNumber" />
+      <xs:enumeration value="licenseType" />
+      <xs:enumeration value="location" />
+      <xs:enumeration value="modifyingUserID" />
+      <xs:enumeration value="results" />
+      <xs:enumeration value="status" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateEducationApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidateEducationID" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="certification" />
+      <xs:enumeration value="city" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="customDate1" />
+      <xs:enumeration value="customDate2" />
+      <xs:enumeration value="customDate3" />
+      <xs:enumeration value="customDate4" />
+      <xs:enumeration value="customDate5" />
+      <xs:enumeration value="customFloat1" />
+      <xs:enumeration value="customFloat2" />
+      <xs:enumeration value="customFloat3" />
+      <xs:enumeration value="customFloat4" />
+      <xs:enumeration value="customFloat5" />
+      <xs:enumeration value="customInt1" />
+      <xs:enumeration value="customInt2" />
+      <xs:enumeration value="customInt3" />
+      <xs:enumeration value="customInt4" />
+      <xs:enumeration value="customInt5" />
+      <xs:enumeration value="customText1" />
+      <xs:enumeration value="customText2" />
+      <xs:enumeration value="customText3" />
+      <xs:enumeration value="customText4" />
+      <xs:enumeration value="customText5" />
+      <xs:enumeration value="customTextBlock1" />
+      <xs:enumeration value="customTextBlock2" />
+      <xs:enumeration value="customTextBlock3" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="degree" />
+      <xs:enumeration value="endDate" />
+      <xs:enumeration value="expirationDate" />
+      <xs:enumeration value="gpa" />
+      <xs:enumeration value="graduationDate" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="major" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="school" />
+      <xs:enumeration value="startDate" />
+      <xs:enumeration value="state" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateReferenceApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="responses" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateReferenceApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidateReferenceID" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="candidateTitle" />
+      <xs:enumeration value="clientCorporationID" />
+      <xs:enumeration value="companyName" />
+      <xs:enumeration value="customDate1" />
+      <xs:enumeration value="customDate2" />
+      <xs:enumeration value="customDate3" />
+      <xs:enumeration value="customDate4" />
+      <xs:enumeration value="customDate5" />
+      <xs:enumeration value="customFloat1" />
+      <xs:enumeration value="customFloat2" />
+      <xs:enumeration value="customFloat3" />
+      <xs:enumeration value="customFloat4" />
+      <xs:enumeration value="customFloat5" />
+      <xs:enumeration value="customInt1" />
+      <xs:enumeration value="customInt2" />
+      <xs:enumeration value="customInt3" />
+      <xs:enumeration value="customInt4" />
+      <xs:enumeration value="customInt5" />
+      <xs:enumeration value="customMigrateGUID" />
+      <xs:enumeration value="customText1" />
+      <xs:enumeration value="customText2" />
+      <xs:enumeration value="customText3" />
+      <xs:enumeration value="customText4" />
+      <xs:enumeration value="customText5" />
+      <xs:enumeration value="customTextBlock1" />
+      <xs:enumeration value="customTextBlock2" />
+      <xs:enumeration value="customTextBlock3" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="employmentEnd" />
+      <xs:enumeration value="employmentStart" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="referenceClientContactID" />
+      <xs:enumeration value="referenceEmail" />
+      <xs:enumeration value="referenceFirstName" />
+      <xs:enumeration value="referenceLastName" />
+      <xs:enumeration value="referencePhone" />
+      <xs:enumeration value="referenceTitle" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="yearsKnown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateReferenceQuestionApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="responses" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateReferenceQuestionApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidateReferenceQuestionID" />
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="questionText" />
+      <xs:enumeration value="sortOrder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateReferenceResponseApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="userReferenceResponseID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="questionID" />
+      <xs:enumeration value="referenceID" />
+      <xs:enumeration value="responseText" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateSourceApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidateSourceID" />
+      <xs:enumeration value="accountNumber" />
+      <xs:enumeration value="address" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="fax" />
+      <xs:enumeration value="fee" />
+      <xs:enumeration value="feeType" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="phone" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="candidateWorkHistoryApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidateWorkHistoryID" />
+      <xs:enumeration value="bonus" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="clientCorporationID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="commission" />
+      <xs:enumeration value="companyName" />
+      <xs:enumeration value="customDate1" />
+      <xs:enumeration value="customDate2" />
+      <xs:enumeration value="customDate3" />
+      <xs:enumeration value="customDate4" />
+      <xs:enumeration value="customDate5" />
+      <xs:enumeration value="customFloat1" />
+      <xs:enumeration value="customFloat2" />
+      <xs:enumeration value="customFloat3" />
+      <xs:enumeration value="customFloat4" />
+      <xs:enumeration value="customFloat5" />
+      <xs:enumeration value="customInt1" />
+      <xs:enumeration value="customInt2" />
+      <xs:enumeration value="customInt3" />
+      <xs:enumeration value="customInt4" />
+      <xs:enumeration value="customInt5" />
+      <xs:enumeration value="customText1" />
+      <xs:enumeration value="customText2" />
+      <xs:enumeration value="customText3" />
+      <xs:enumeration value="customText4" />
+      <xs:enumeration value="customText5" />
+      <xs:enumeration value="customTextBlock1" />
+      <xs:enumeration value="customTextBlock2" />
+      <xs:enumeration value="customTextBlock3" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="endDate" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isLastJob" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="salary1" />
+      <xs:enumeration value="salary2" />
+      <xs:enumeration value="salaryType" />
+      <xs:enumeration value="startDate" />
+      <xs:enumeration value="terminationReason" />
+      <xs:enumeration value="title" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="sendoutApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="sendoutID" />
+      <xs:enumeration value="candidateID" />
+      <xs:enumeration value="clientContactID" />
+      <xs:enumeration value="clientCorporationID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="email" />
+      <xs:enumeration value="isRead" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="userID" />
+      <xs:enumeration value="userMessageID" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

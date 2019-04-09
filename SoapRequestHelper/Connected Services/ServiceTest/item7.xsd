@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://timecard.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://timecard.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="timecardDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:timecardDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="externalID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="timecardBatchID" type="xs:int" />
+          <xs:element minOccurs="0" name="timecardID" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardBatchDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:timecardBatchDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardBatchDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="batchName" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isInvoiced" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isLocked" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isOpen" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="timecardBatchID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardExpenseDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:timecardExpenseDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardExpenseDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateExpensed" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fileExportID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceItemID" type="xs:int" />
+          <xs:element minOccurs="0" name="lastModifyingPersonID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="payClassID" type="xs:int" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="projectID" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="timecardExpenseID" type="xs:int" />
+          <xs:element minOccurs="0" name="timecardID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardPayClassDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:timecardPayClassDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardPayClassDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="billRateField" type="xs:string" />
+          <xs:element minOccurs="0" name="classType" type="xs:string" />
+          <xs:element minOccurs="0" name="clientMarkupFactor" type="xs:double" />
+          <xs:element minOccurs="0" name="display" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="excludeFromInvoicing" type="xs:int" />
+          <xs:element minOccurs="0" name="excludeFromPayrolling" type="xs:int" />
+          <xs:element minOccurs="0" name="isRegularHoursClass" type="xs:boolean" />
+          <xs:element minOccurs="0" name="markupFactor" type="xs:double" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="payClassID" type="xs:int" />
+          <xs:element minOccurs="0" name="payRateField" type="xs:string" />
+          <xs:element minOccurs="0" name="privateLabelID" type="xs:int" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardTimeDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:timecardTimeDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timecardTimeDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="breakEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="breakStart" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="clientBillRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateWorked" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fileExportID" type="xs:int" />
+          <xs:element minOccurs="0" name="hours" type="xs:double" />
+          <xs:element minOccurs="0" name="invoiceID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceItemID" type="xs:int" />
+          <xs:element minOccurs="0" name="lastModifyingPersonID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="minutesBreak" type="xs:int" />
+          <xs:element minOccurs="0" name="payClassID" type="xs:int" />
+          <xs:element minOccurs="0" name="payRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="projectCode" type="xs:string" />
+          <xs:element minOccurs="0" name="projectID" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="timeIn" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="timeOut" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="timecardID" type="xs:int" />
+          <xs:element minOccurs="0" name="timecardTimeID" type="xs:int" />
+          <xs:element minOccurs="0" name="workersCompensationRate" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="timecardApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="expenses" />
+      <xs:enumeration value="timecardTimes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timecardApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="timecardID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateBegin" />
+      <xs:enumeration value="dateEnd" />
+      <xs:enumeration value="externalID" />
+      <xs:enumeration value="invoiceID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="timecardBatchID" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timecardBatchApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="invoices" />
+      <xs:enumeration value="timecards" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timecardBatchApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="timecardBatchID" />
+      <xs:enumeration value="batchName" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isInvoiced" />
+      <xs:enumeration value="isLocked" />
+      <xs:enumeration value="isOpen" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="status" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timecardExpenseApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="timecardExpenseID" />
+      <xs:enumeration value="amount" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateExpensed" />
+      <xs:enumeration value="fileExportID" />
+      <xs:enumeration value="invoiceID" />
+      <xs:enumeration value="invoiceItemID" />
+      <xs:enumeration value="lastModifyingPersonID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="payClassID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="projectID" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="timecardID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timecardPayClassApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="payClassID" />
+      <xs:enumeration value="billRateField" />
+      <xs:enumeration value="classType" />
+      <xs:enumeration value="clientMarkupFactor" />
+      <xs:enumeration value="display" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="excludeFromInvoicing" />
+      <xs:enumeration value="excludeFromPayrolling" />
+      <xs:enumeration value="isRegularHoursClass" />
+      <xs:enumeration value="markupFactor" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="payRateField" />
+      <xs:enumeration value="privateLabelID" />
+      <xs:enumeration value="sortOrder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timecardTimeApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="timecardTimeID" />
+      <xs:enumeration value="breakEnd" />
+      <xs:enumeration value="breakStart" />
+      <xs:enumeration value="clientBillRate" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateWorked" />
+      <xs:enumeration value="fileExportID" />
+      <xs:enumeration value="hours" />
+      <xs:enumeration value="invoiceID" />
+      <xs:enumeration value="invoiceItemID" />
+      <xs:enumeration value="lastModifyingPersonID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="minutesBreak" />
+      <xs:enumeration value="payClassID" />
+      <xs:enumeration value="payRate" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="projectCode" />
+      <xs:enumeration value="projectID" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="timeIn" />
+      <xs:enumeration value="timeOut" />
+      <xs:enumeration value="timecardID" />
+      <xs:enumeration value="workersCompensationRate" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

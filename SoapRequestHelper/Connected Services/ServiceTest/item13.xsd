@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns4="http://entity.bullhorn.com/" xmlns:ns5="http://query.apiservice.bullhorn.com/" xmlns:ns2="http://subscription.dataevent.bullhorn.com/" xmlns:ns1="http://result.apiservice.bullhorn.com/" xmlns:ns6="http://oauth.apiservice.bullhorn.com/" xmlns:ns3="http://meta.apiservice.bullhorn.com/" xmlns:tns="http://apiservice.bullhorn.com/" targetNamespace="http://apiservice.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=6" namespace="http://result.apiservice.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=3" namespace="http://subscription.dataevent.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=14" namespace="http://meta.apiservice.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=9" namespace="http://query.apiservice.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=11" namespace="http://oauth.apiservice.bullhorn.com/" />
+  <xs:element name="_eventsGenerateBogusEvents" type="tns:_eventsGenerateBogusEvents" />
+  <xs:element name="_eventsGenerateBogusEventsResponse" type="tns:_eventsGenerateBogusEventsResponse" />
+  <xs:element name="_eventsGenerateBogusFieldMapChangeEvents" type="tns:_eventsGenerateBogusFieldMapChangeEvents" />
+  <xs:element name="_eventsGenerateBogusFieldMapChangeEventsResponse" type="tns:_eventsGenerateBogusFieldMapChangeEventsResponse" />
+  <xs:element name="_eventsGenerateBogusJobMatchSearchEvents" type="tns:_eventsGenerateBogusJobMatchSearchEvents" />
+  <xs:element name="_eventsGenerateBogusJobMatchSearchEventsResponse" type="tns:_eventsGenerateBogusJobMatchSearchEventsResponse" />
+  <xs:element name="_exportApiEnums" type="tns:_exportApiEnums" />
+  <xs:element name="_exportApiEnumsResponse" type="tns:_exportApiEnumsResponse" />
+  <xs:element name="addFile" type="tns:addFile" />
+  <xs:element name="addFileResponse" type="tns:addFileResponse" />
+  <xs:element name="addNoteReference" type="tns:addNoteReference" />
+  <xs:element name="addNoteReferenceResponse" type="tns:addNoteReferenceResponse" />
+  <xs:element name="associate" type="tns:associate" />
+  <xs:element name="associateMultiple" type="tns:associateMultiple" />
+  <xs:element name="associateMultipleResponse" type="tns:associateMultipleResponse" />
+  <xs:element name="associateResponse" type="tns:associateResponse" />
+  <xs:element name="delete" type="tns:delete" />
+  <xs:element name="deleteById" type="tns:deleteById" />
+  <xs:element name="deleteByIdResponse" type="tns:deleteByIdResponse" />
+  <xs:element name="deleteFile" type="tns:deleteFile" />
+  <xs:element name="deleteFileResponse" type="tns:deleteFileResponse" />
+  <xs:element name="deleteResponse" type="tns:deleteResponse" />
+  <xs:element name="eventsCount" type="tns:eventsCount" />
+  <xs:element name="eventsCountResponse" type="tns:eventsCountResponse" />
+  <xs:element name="eventsGetEvents" type="tns:eventsGetEvents" />
+  <xs:element name="eventsGetEventsResponse" type="tns:eventsGetEventsResponse" />
+  <xs:element name="eventsGetLastRequestId" type="tns:eventsGetLastRequestId" />
+  <xs:element name="eventsGetLastRequestIdResponse" type="tns:eventsGetLastRequestIdResponse" />
+  <xs:element name="eventsRegetEvents" type="tns:eventsRegetEvents" />
+  <xs:element name="eventsRegetEventsResponse" type="tns:eventsRegetEventsResponse" />
+  <xs:element name="eventsSubscribe" type="tns:eventsSubscribe" />
+  <xs:element name="eventsSubscribeResponse" type="tns:eventsSubscribeResponse" />
+  <xs:element name="eventsUnsubscribe" type="tns:eventsUnsubscribe" />
+  <xs:element name="eventsUnsubscribeResponse" type="tns:eventsUnsubscribeResponse" />
+  <xs:element name="find" type="tns:find" />
+  <xs:element name="findMultiple" type="tns:findMultiple" />
+  <xs:element name="findMultipleResponse" type="tns:findMultipleResponse" />
+  <xs:element name="findResponse" type="tns:findResponse" />
+  <xs:element name="getApplicationServerHost" type="tns:getApplicationServerHost" />
+  <xs:element name="getApplicationServerHostResponse" type="tns:getApplicationServerHostResponse" />
+  <xs:element name="getAssociationIds" type="tns:getAssociationIds" />
+  <xs:element name="getAssociationIdsResponse" type="tns:getAssociationIdsResponse" />
+  <xs:element name="getCertifications" type="tns:getCertifications" />
+  <xs:element name="getCertificationsResponse" type="tns:getCertificationsResponse" />
+  <xs:element name="getClientCorporationTemplateData" type="tns:getClientCorporationTemplateData" />
+  <xs:element name="getClientCorporationTemplateDataIds" type="tns:getClientCorporationTemplateDataIds" />
+  <xs:element name="getClientCorporationTemplateDataIdsResponse" type="tns:getClientCorporationTemplateDataIdsResponse" />
+  <xs:element name="getClientCorporationTemplateDataResponse" type="tns:getClientCorporationTemplateDataResponse" />
+  <xs:element name="getClientCorporationTemplateIds" type="tns:getClientCorporationTemplateIds" />
+  <xs:element name="getClientCorporationTemplateIdsResponse" type="tns:getClientCorporationTemplateIdsResponse" />
+  <xs:element name="getClientCorporationTemplateMetadata" type="tns:getClientCorporationTemplateMetadata" />
+  <xs:element name="getClientCorporationTemplateMetadataResponse" type="tns:getClientCorporationTemplateMetadataResponse" />
+  <xs:element name="getDepartmentUserIds" type="tns:getDepartmentUserIds" />
+  <xs:element name="getDepartmentUserIdsResponse" type="tns:getDepartmentUserIdsResponse" />
+  <xs:element name="getEditHistory" type="tns:getEditHistory" />
+  <xs:element name="getEditHistoryByDates" type="tns:getEditHistoryByDates" />
+  <xs:element name="getEditHistoryByDatesResponse" type="tns:getEditHistoryByDatesResponse" />
+  <xs:element name="getEditHistoryByTransactionId" type="tns:getEditHistoryByTransactionId" />
+  <xs:element name="getEditHistoryByTransactionIdResponse" type="tns:getEditHistoryByTransactionIdResponse" />
+  <xs:element name="getEditHistoryResponse" type="tns:getEditHistoryResponse" />
+  <xs:element name="getEntityFieldMaps" type="tns:getEntityFieldMaps" />
+  <xs:element name="getEntityFieldMapsResponse" type="tns:getEntityFieldMapsResponse" />
+  <xs:element name="getEntityFiles" type="tns:getEntityFiles" />
+  <xs:element name="getEntityFilesResponse" type="tns:getEntityFilesResponse" />
+  <xs:element name="getEntityMetadata" type="tns:getEntityMetadata" />
+  <xs:element name="getEntityMetadataResponse" type="tns:getEntityMetadataResponse" />
+  <xs:element name="getEntityNotes" type="tns:getEntityNotes" />
+  <xs:element name="getEntityNotesResponse" type="tns:getEntityNotesResponse" />
+  <xs:element name="getEntityNotesWhere" type="tns:getEntityNotesWhere" />
+  <xs:element name="getEntityNotesWhereResponse" type="tns:getEntityNotesWhereResponse" />
+  <xs:element name="getFile" type="tns:getFile" />
+  <xs:element name="getFileResponse" type="tns:getFileResponse" />
+  <xs:element name="getJobOrderFieldMaps" type="tns:getJobOrderFieldMaps" />
+  <xs:element name="getJobOrderFieldMapsResponse" type="tns:getJobOrderFieldMapsResponse" />
+  <xs:element name="getJobOrderMetadata" type="tns:getJobOrderMetadata" />
+  <xs:element name="getJobOrderMetadataResponse" type="tns:getJobOrderMetadataResponse" />
+  <xs:element name="getJobOrderTemplateData" type="tns:getJobOrderTemplateData" />
+  <xs:element name="getJobOrderTemplateDataIds" type="tns:getJobOrderTemplateDataIds" />
+  <xs:element name="getJobOrderTemplateDataIdsResponse" type="tns:getJobOrderTemplateDataIdsResponse" />
+  <xs:element name="getJobOrderTemplateDataResponse" type="tns:getJobOrderTemplateDataResponse" />
+  <xs:element name="getJobOrderTemplateIds" type="tns:getJobOrderTemplateIds" />
+  <xs:element name="getJobOrderTemplateIdsResponse" type="tns:getJobOrderTemplateIdsResponse" />
+  <xs:element name="getJobOrderTemplateMetadata" type="tns:getJobOrderTemplateMetadata" />
+  <xs:element name="getJobOrderTemplateMetadataResponse" type="tns:getJobOrderTemplateMetadataResponse" />
+  <xs:element name="getJobOrderViewLayout" type="tns:getJobOrderViewLayout" />
+  <xs:element name="getJobOrderViewLayoutResponse" type="tns:getJobOrderViewLayoutResponse" />
+  <xs:element name="getNoteReferences" type="tns:getNoteReferences" />
+  <xs:element name="getNoteReferencesResponse" type="tns:getNoteReferencesResponse" />
+  <xs:element name="getUserDepartmentIds" type="tns:getUserDepartmentIds" />
+  <xs:element name="getUserDepartmentIdsResponse" type="tns:getUserDepartmentIdsResponse" />
+  <xs:element name="getUserPrimaryDepartmentId" type="tns:getUserPrimaryDepartmentId" />
+  <xs:element name="getUserPrimaryDepartmentIdResponse" type="tns:getUserPrimaryDepartmentIdResponse" />
+  <xs:element name="getUserSamlInformation" type="tns:getUserSamlInformation" />
+  <xs:element name="getUserSamlInformationResponse" type="tns:getUserSamlInformationResponse" />
+  <xs:element name="getUserTemplateData" type="tns:getUserTemplateData" />
+  <xs:element name="getUserTemplateDataIds" type="tns:getUserTemplateDataIds" />
+  <xs:element name="getUserTemplateDataIdsResponse" type="tns:getUserTemplateDataIdsResponse" />
+  <xs:element name="getUserTemplateDataResponse" type="tns:getUserTemplateDataResponse" />
+  <xs:element name="getUserTemplateIds" type="tns:getUserTemplateIds" />
+  <xs:element name="getUserTemplateIdsResponse" type="tns:getUserTemplateIdsResponse" />
+  <xs:element name="getUserTemplateMetadata" type="tns:getUserTemplateMetadata" />
+  <xs:element name="getUserTemplateMetadataResponse" type="tns:getUserTemplateMetadataResponse" />
+  <xs:element name="getUserTypes" type="tns:getUserTypes" />
+  <xs:element name="getUserTypesResponse" type="tns:getUserTypesResponse" />
+  <xs:element name="getViewLayout" type="tns:getViewLayout" />
+  <xs:element name="getViewLayoutResponse" type="tns:getViewLayoutResponse" />
+  <xs:element name="parseResume" type="tns:parseResume" />
+  <xs:element name="parseResumeResponse" type="tns:parseResumeResponse" />
+  <xs:element name="query" type="tns:query" />
+  <xs:element name="queryResponse" type="tns:queryResponse" />
+  <xs:element name="removeNoteReference" type="tns:removeNoteReference" />
+  <xs:element name="removeNoteReferenceResponse" type="tns:removeNoteReferenceResponse" />
+  <xs:element name="save" type="tns:save" />
+  <xs:element name="saveResponse" type="tns:saveResponse" />
+  <xs:element name="startPartnerSession" type="tns:startPartnerSession" />
+  <xs:element name="startPartnerSessionResponse" type="tns:startPartnerSessionResponse" />
+  <xs:element name="startSession" type="tns:startSession" />
+  <xs:element name="startSessionResponse" type="tns:startSessionResponse" />
+  <xs:element name="unassociate" type="tns:unassociate" />
+  <xs:element name="unassociateMultiple" type="tns:unassociateMultiple" />
+  <xs:element name="unassociateMultipleResponse" type="tns:unassociateMultipleResponse" />
+  <xs:element name="unassociateResponse" type="tns:unassociateResponse" />
+  <xs:element name="updateFile" type="tns:updateFile" />
+  <xs:element name="updateFileResponse" type="tns:updateFileResponse" />
+  <xs:complexType name="getFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="entityId" type="xs:anyType" />
+      <xs:element minOccurs="0" name="fileId" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetFileResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_eventsGenerateBogusJobMatchSearchEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+      <xs:element name="count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_eventsGenerateBogusJobMatchSearchEventsResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getNoteReferences">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="noteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNoteReferencesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetNoteReferencesResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsSubscribe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+      <xs:element minOccurs="0" name="criteria" type="ns2:subscriptionCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsSubscribeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiEventsSubscribeResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="personEntityName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTypesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetUserTypesResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="abstractAddress" abstract="true">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getEntityFiles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="entityId" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityFilesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityFilesResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserSamlInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="corporateUserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserSamlInformationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetUserSamlInformationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="entityId" type="xs:anyType" />
+      <xs:element minOccurs="0" name="fileMetaData" type="ns3:fileMeta" />
+      <xs:element xmlns:ns7="http://www.w3.org/2005/05/xmlmime" ns7:expectedContentTypes="application/octet-stream" minOccurs="0" name="fileContent" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiAddFileResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_exportApiEnums">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="ns4:bhApiEnums" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_exportApiEnumsResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateDataIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+      <xs:element name="jobOrderId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateDataIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateDataIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertifications">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificationsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiQueryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderViewLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="typeId" type="xs:int" />
+      <xs:element minOccurs="0" name="sectionName" type="xs:string" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderViewLayoutResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetViewLayoutResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsCount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsCountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiEventsCountResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="associate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="associationName" type="xs:string" />
+      <xs:element minOccurs="0" name="associateId" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="associateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiAssociateResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserDepartmentIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="corporateUserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserDepartmentIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetUserDepartmentIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityFieldMaps">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityFieldMapsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityFieldMapsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEditHistoryByDates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEditHistoryByDatesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEditHistoryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="save">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="dto" type="ns4:abstractDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiSaveResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsRegetEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+      <xs:element name="requestId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsRegetEventsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiEventsGetEventsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+      <xs:element name="clientCorporationId" type="xs:int" />
+      <xs:element name="dataId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateDataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityNotesWhere">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="notesWhere" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityNotesWhereResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityNotesResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsGetEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+      <xs:element name="maxEvents" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsGetEventsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiEventsGetEventsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAssociationIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="associationName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAssociationIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetAssociationIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addNoteReference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="noteId" type="xs:int" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element name="entityId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addNoteReferenceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiAddNoteReferenceResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEditHistoryByTransactionId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="transactionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEditHistoryByTransactionIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEditHistoryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateDataIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+      <xs:element name="userId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateDataIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateDataIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateDataIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+      <xs:element name="clientCorporationId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateDataIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateDataIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsUnsubscribe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsUnsubscribeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiEventsUnsubscribeResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="entityId" type="xs:anyType" />
+      <xs:element minOccurs="0" name="fileId" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiDeleteFileResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDepartmentUserIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="departmentId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDepartmentUserIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetDepartmentUserIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderFieldMaps">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="typeId" type="xs:int" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderFieldMapsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityFieldMapsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+      <xs:element name="userId" type="xs:int" />
+      <xs:element name="dataId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateDataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="associateMultiple">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="associationName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="associateIds" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="associateMultipleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiAssociateResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unassociate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="associationName" type="xs:string" />
+      <xs:element minOccurs="0" name="associateId" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unassociateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiUnassociateResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="delete">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="dto" type="ns4:abstractDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_eventsGenerateBogusEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element name="count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_eventsGenerateBogusEventsResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="findMultiple">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ids" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findMultipleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiFindMultipleResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="find">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiFindResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserPrimaryDepartmentId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="corporateUserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserPrimaryDepartmentIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetUserPrimaryDepartmentIdResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" name="apiKey" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startSessionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiStartSessionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parseResume">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="base64ChunkedResume" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parseResumeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiParseResumeResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeNoteReference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="noteId" type="xs:int" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element name="entityId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeNoteReferenceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiRemoveNoteReferenceResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getApplicationServerHost">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string" />
+      <xs:element minOccurs="0" name="source" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getApplicationServerHostResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateMetadataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetJobOrderTemplateMetadataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="entityId" type="xs:anyType" />
+      <xs:element minOccurs="0" name="fileMetaData" type="ns3:fileMeta" />
+      <xs:element minOccurs="0" name="fileId" type="xs:anyType" />
+      <xs:element xmlns:ns8="http://www.w3.org/2005/05/xmlmime" ns8:expectedContentTypes="application/octet-stream" minOccurs="0" name="fileContent" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="updateFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiUpdateFileResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unassociateMultiple">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+      <xs:element minOccurs="0" name="associationName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="associateIds" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="unassociateMultipleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiUnassociateResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getViewLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="sectionName" type="xs:string" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getViewLayoutResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetViewLayoutResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityNotes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityNotesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityNotesResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+      <xs:element name="jobOrderId" type="xs:int" />
+      <xs:element name="dataId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderTemplateDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateDataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="query">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="query" type="ns5:dtoQuery" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="queryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiQueryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsGetLastRequestId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventsGetLastRequestIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiEventsGetLastRequestIdResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEntityMetadataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityMetadataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_eventsGenerateBogusFieldMapChangeEvents">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+      <xs:element name="count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_eventsGenerateBogusFieldMapChangeEventsResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="startPartnerSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sessionRequest" type="ns6:partnerSessionRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startPartnerSessionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiStartSessionResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEditHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEditHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEditHistoryResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUserTemplateMetadataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetUserTemplateMetadataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="templateId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateMetadataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetClientCorporationTemplateMetadataResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateIds">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getClientCorporationTemplateIdsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityTemplateIdsResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderMetadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+      <xs:element name="typeId" type="xs:int" />
+      <xs:element minOccurs="0" name="privateLabelId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getJobOrderMetadataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:apiGetEntityMetadataResult" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

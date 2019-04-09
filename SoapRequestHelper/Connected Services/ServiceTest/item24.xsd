@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns1="http://event.dataevent.bullhorn.com/" targetNamespace="http://result.dataevent.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=20" namespace="http://event.dataevent.bullhorn.com/" />
+  <xs:complexType name="getEventsResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="events" nillable="true" type="ns1:dataEvent" />
+      <xs:element name="requestId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

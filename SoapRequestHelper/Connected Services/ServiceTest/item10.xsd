@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://meta.apiservice.bullhorn.com/" targetNamespace="http://meta.apiservice.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="fileMeta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comments" type="xs:string" />
+      <xs:element minOccurs="0" name="contentSubType" type="xs:string" />
+      <xs:element minOccurs="0" name="contentType" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="viewLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="available" nillable="true" type="tns:apiFieldMap" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="selected" nillable="true" type="tns:apiFieldMap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apiFieldMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="allowMultiple" type="xs:boolean" />
+      <xs:element minOccurs="0" name="columnName" type="xs:string" />
+      <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="defaultValue" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="displayValueList" type="xs:string" />
+      <xs:element minOccurs="0" name="editType" type="xs:string" />
+      <xs:element minOccurs="0" name="fieldLabel" type="xs:string" />
+      <xs:element minOccurs="0" name="hint" type="xs:string" />
+      <xs:element minOccurs="0" name="isDescending" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isHidden" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="valueList" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apiEntityMeta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="label" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="propertyMetas" nillable="true" type="tns:apiPropertyMeta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apiPropertyMeta">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="childPropertyMetas" nillable="true" type="tns:apiPropertyMeta" />
+      <xs:element minOccurs="0" name="defaultValue" type="xs:string" />
+      <xs:element minOccurs="0" name="editType" type="xs:string" />
+      <xs:element name="hidden" type="xs:boolean" />
+      <xs:element minOccurs="0" name="hint" type="xs:string" />
+      <xs:element minOccurs="0" name="label" type="xs:string" />
+      <xs:element minOccurs="0" name="limit" type="xs:int" />
+      <xs:element name="multiple" type="xs:boolean" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element name="required" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="valueDisplayList" nillable="true" type="tns:apiValueDisplayPair" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apiValueDisplayPair">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="display" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

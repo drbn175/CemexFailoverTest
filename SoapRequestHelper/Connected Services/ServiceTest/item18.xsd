@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns1="http://entity.bullhorn.com/" xmlns:tns="http://test.entity.bullhorn.com/" xmlns:ns2="http://emb.entity.bullhorn.com/" targetNamespace="http://test.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=22" namespace="http://emb.entity.bullhorn.com/" />
+  <xs:complexType name="testCategoryDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:testCategoryDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testCategoryDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testJobDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:testJobDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testJobDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" type="ns2:address" />
+          <xs:element minOccurs="0" name="isPublic" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobID" type="xs:int" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testOwnerDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:testOwnerDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="testOwnerDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="testCategoryApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="jobs" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="testCategoryApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="testJobApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="categories" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="testJobApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="jobID" />
+      <xs:enumeration value="address" />
+      <xs:enumeration value="isPublic" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="title" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="testOwnerApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="jobs" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="testOwnerApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

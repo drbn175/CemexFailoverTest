@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tearsheet.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://tearsheet.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="tearsheetDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:tearsheetDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tearsheetDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isPrivate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="tearsheetID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="tearsheetApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidates" />
+      <xs:enumeration value="clientContacts" />
+      <xs:enumeration value="jobOrders" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tearsheetApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="tearsheetID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isPrivate" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="password" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

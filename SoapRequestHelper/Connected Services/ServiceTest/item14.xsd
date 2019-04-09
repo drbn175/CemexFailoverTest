@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://cert.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://cert.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="certificationDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:certificationDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="certificationDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="certificationID" type="xs:int" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="certificationApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="privateLabels" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="certificationApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="certificationID" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

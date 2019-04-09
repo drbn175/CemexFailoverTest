@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://template.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="entityTemplateDto" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="displayType" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="groupName" type="xs:string" />
+          <xs:element minOccurs="0" name="isSearchable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="reportID" type="xs:int" />
+          <xs:element minOccurs="0" name="staticTemplateName" type="xs:string" />
+          <xs:element minOccurs="0" name="tabName" type="xs:string" />
+          <xs:element minOccurs="0" name="templateId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="entityTemplateAttributeDto" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="attributeType" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="hint" type="xs:string" />
+          <xs:element minOccurs="0" name="isRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isSearchable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="optionList" type="xs:string" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="staticFieldName" type="xs:string" />
+          <xs:element minOccurs="0" name="templateAttributeId" type="xs:int" />
+          <xs:element minOccurs="0" name="templateID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://entity.bullhorn.com/" targetNamespace="http://entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="abstractDto" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="abstractDtoBase" abstract="true">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:simpleType name="bhApiEnums">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="apiEntityName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Appointment" />
+      <xs:enumeration value="AppointmentAttendee" />
+      <xs:enumeration value="BusinessSector" />
+      <xs:enumeration value="Candidate" />
+      <xs:enumeration value="CandidateAssessment" />
+      <xs:enumeration value="CandidateAssessmentSystem" />
+      <xs:enumeration value="CandidateCertification" />
+      <xs:enumeration value="CandidateEducation" />
+      <xs:enumeration value="CandidateReference" />
+      <xs:enumeration value="CandidateReferenceQuestion" />
+      <xs:enumeration value="CandidateReferenceResponse" />
+      <xs:enumeration value="CandidateSource" />
+      <xs:enumeration value="CandidateWorkHistory" />
+      <xs:enumeration value="Category" />
+      <xs:enumeration value="Certification" />
+      <xs:enumeration value="ClientContact" />
+      <xs:enumeration value="ClientCorporation" />
+      <xs:enumeration value="ClientCorporationCertification" />
+      <xs:enumeration value="ClientCorporationInvoiceGroup" />
+      <xs:enumeration value="ClientCorporationTemplate" />
+      <xs:enumeration value="ClientCorporationTemplateAttribute" />
+      <xs:enumeration value="CorporateUser" />
+      <xs:enumeration value="CorporationDepartment" />
+      <xs:enumeration value="CostCenter" />
+      <xs:enumeration value="Country" />
+      <xs:enumeration value="DistributionList" />
+      <xs:enumeration value="HousingComplex" />
+      <xs:enumeration value="HousingComplexAmenity" />
+      <xs:enumeration value="HousingComplexFurnitureDelivery" />
+      <xs:enumeration value="HousingComplexUnit" />
+      <xs:enumeration value="HousingComplexUtilityAccount" />
+      <xs:enumeration value="Invoice" />
+      <xs:enumeration value="InvoiceGroup" />
+      <xs:enumeration value="InvoiceItem" />
+      <xs:enumeration value="JobOrder" />
+      <xs:enumeration value="JobOrderTemplate" />
+      <xs:enumeration value="JobOrderTemplateAttribute" />
+      <xs:enumeration value="JobSubmission" />
+      <xs:enumeration value="Note" />
+      <xs:enumeration value="NoteEntity" />
+      <xs:enumeration value="Person" />
+      <xs:enumeration value="Placement" />
+      <xs:enumeration value="PlacementChangeRequest" />
+      <xs:enumeration value="PlacementCommission" />
+      <xs:enumeration value="PrivateLabel" />
+      <xs:enumeration value="RateCard" />
+      <xs:enumeration value="RecurringAppointmentDelete" />
+      <xs:enumeration value="Report" />
+      <xs:enumeration value="ReportCategory" />
+      <xs:enumeration value="ReportCriteria" />
+      <xs:enumeration value="ReportOutput" />
+      <xs:enumeration value="Sendout" />
+      <xs:enumeration value="Skill" />
+      <xs:enumeration value="Specialty" />
+      <xs:enumeration value="State" />
+      <xs:enumeration value="Survey" />
+      <xs:enumeration value="SurveyQuestion" />
+      <xs:enumeration value="SurveyTemplate" />
+      <xs:enumeration value="Task" />
+      <xs:enumeration value="Tearsheet" />
+      <xs:enumeration value="TestCategory" />
+      <xs:enumeration value="TestJob" />
+      <xs:enumeration value="TestOwner" />
+      <xs:enumeration value="TimeUnit" />
+      <xs:enumeration value="Timecard" />
+      <xs:enumeration value="TimecardBatch" />
+      <xs:enumeration value="TimecardExpense" />
+      <xs:enumeration value="TimecardPayClass" />
+      <xs:enumeration value="TimecardTime" />
+      <xs:enumeration value="UserTemplate" />
+      <xs:enumeration value="UserTemplateAttribute" />
+      <xs:enumeration value="UserType" />
+      <xs:enumeration value="UserWork" />
+      <xs:enumeration value="WorkersCompensation" />
+      <xs:enumeration value="WorkersCompensationRate" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

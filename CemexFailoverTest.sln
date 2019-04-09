@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTransactionWatcher", "Sq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyticsHelper", "LogAnalyticsHelper\LogAnalyticsHelper.csproj", "{48FE851D-ED44-4DCB-A866-D05DB2D6D3E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpRequestHelper", "HttpRequestHelper\HttpRequestHelper.csproj", "{53C77395-3DDE-4001-B37C-239FBDB67D76}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppWatcher", "WebAppWatcher\WebAppWatcher.csproj", "{6C058B1C-D0D9-465D-A543-4AC974C07ED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapRequestHelper", "SoapRequestHelper\SoapRequestHelper.csproj", "{025F3D98-07D3-4093-A4D2-F30AF128A20B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,20 +37,20 @@ Global
 		{48FE851D-ED44-4DCB-A866-D05DB2D6D3E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48FE851D-ED44-4DCB-A866-D05DB2D6D3E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48FE851D-ED44-4DCB-A866-D05DB2D6D3E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53C77395-3DDE-4001-B37C-239FBDB67D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53C77395-3DDE-4001-B37C-239FBDB67D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53C77395-3DDE-4001-B37C-239FBDB67D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53C77395-3DDE-4001-B37C-239FBDB67D76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C058B1C-D0D9-465D-A543-4AC974C07ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C058B1C-D0D9-465D-A543-4AC974C07ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C058B1C-D0D9-465D-A543-4AC974C07ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C058B1C-D0D9-465D-A543-4AC974C07ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
 		SolutionGuid = {60014B29-2EB2-43B5-8620-6A2563F85A9B}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
 	EndGlobalSection
 EndGlobal

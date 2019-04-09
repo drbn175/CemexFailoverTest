@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://types.entity.bullhorn.com/" targetNamespace="http://types.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="loginRestrictions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ipAddress" type="xs:string" />
+      <xs:element minOccurs="0" name="timeEnd" type="xs:string" />
+      <xs:element minOccurs="0" name="timeStart" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="weekDays" nillable="true" type="tns:dayOfWeek" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="dayOfWeek">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUN" />
+      <xs:enumeration value="MON" />
+      <xs:enumeration value="TUE" />
+      <xs:enumeration value="WED" />
+      <xs:enumeration value="THU" />
+      <xs:enumeration value="FRI" />
+      <xs:enumeration value="SAT" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

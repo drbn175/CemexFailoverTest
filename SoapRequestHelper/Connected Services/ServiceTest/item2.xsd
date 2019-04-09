@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://corp.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://corp.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="corporationDepartmentDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:corporationDepartmentDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="corporationDepartmentDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="costCenterID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="departmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="costCenterDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:costCenterDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="costCenterDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="costCenterID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="corporationDepartmentApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="departmentID" />
+      <xs:enumeration value="costCenterID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="costCenterApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="departments" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="costCenterApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="costCenterID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

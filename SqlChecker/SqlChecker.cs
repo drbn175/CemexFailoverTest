@@ -55,7 +55,7 @@ namespace SqlChecker
                         db.Retries = db.Retries + 1;
                     }
 
-                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, sqlCheckerSettings.LogAnalyticsWorkspaceKey, logName, db);
+                    await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(sqlCheckerSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, sqlCheckerSettings.LogAnalyticsWorkspaceKey, logName, new { db.IsAlive, db.Retries, db.ResourceId, db.Exception });
 
                 }
                 if (sqlCheckerSettings.DataBases.Exists(item => !item.IsAlive))
@@ -90,7 +90,7 @@ namespace SqlChecker
                 if (db != null && db.ResourceId != string.Empty)
                 {
                     log.LogInformation($"Access to DB {db.ResourceId}.");
-                    if (db.DataBaseConnection == string.Empty || db.Command == string.Empty)
+                    if (db.DataBaseConnection== null || db.DataBaseConnection == string.Empty || db.Command == string.Empty)
                     {
                         result = new Tuple<bool, string, string>(false, "Setting configuration error", "Check databases JSON");
                     }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://survey.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://survey.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="surveyDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:surveyDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="surveyDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateCompleted" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="placementIDOld" type="xs:int" />
+          <xs:element minOccurs="0" name="reviewingClientContactID" type="xs:int" />
+          <xs:element minOccurs="0" name="surveyID" type="xs:int" />
+          <xs:element minOccurs="0" name="templateID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="surveyQuestionDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:surveyQuestionDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="surveyQuestionDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="defaultScore" type="xs:int" />
+          <xs:element minOccurs="0" name="displayList" type="xs:string" />
+          <xs:element minOccurs="0" name="editType" type="xs:string" />
+          <xs:element minOccurs="0" name="hint" type="xs:string" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="question" type="xs:string" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="surveyQuestionID" type="xs:int" />
+          <xs:element minOccurs="0" name="templateID" type="xs:int" />
+          <xs:element minOccurs="0" name="valueList" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="surveyTemplateDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:surveyTemplateDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="surveyTemplateDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="publicDescription" type="xs:string" />
+          <xs:element minOccurs="0" name="surveyTemplateID" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="surveyApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="surveyID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateCompleted" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="placementIDOld" />
+      <xs:enumeration value="reviewingClientContactID" />
+      <xs:enumeration value="templateID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="surveyQuestionApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="surveyQuestionID" />
+      <xs:enumeration value="defaultScore" />
+      <xs:enumeration value="displayList" />
+      <xs:enumeration value="editType" />
+      <xs:enumeration value="hint" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isRequired" />
+      <xs:enumeration value="question" />
+      <xs:enumeration value="sortOrder" />
+      <xs:enumeration value="templateID" />
+      <xs:enumeration value="valueList" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="surveyTemplateApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="questions" />
+      <xs:enumeration value="surveys" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="surveyTemplateApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="surveyTemplateID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="publicDescription" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://result.apiservice.bullhorn.com/" xmlns:ns6="http://entity.bullhorn.com/" xmlns:ns7="http://result.dataevent.bullhorn.com/" xmlns:ns5="http://edithistory.apiservice.bullhorn.com/" xmlns:ns2="http://subscription.dataevent.bullhorn.com/" xmlns:ns4="http://meta.apiservice.bullhorn.com/" xmlns:ns1="http://struct.apiservice.bullhorn.com/" xmlns:ns8="http://job.template.entity.bullhorn.com/" xmlns:ns10="http://client.template.entity.bullhorn.com/" xmlns:ns3="http://user.entity.bullhorn.com/" xmlns:ns9="http://user.template.entity.bullhorn.com/" targetNamespace="http://result.apiservice.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=4" namespace="http://struct.apiservice.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=3" namespace="http://subscription.dataevent.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=23" namespace="http://user.entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=14" namespace="http://meta.apiservice.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=24" namespace="http://edithistory.apiservice.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=5" namespace="http://result.dataevent.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=16" namespace="http://job.template.entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=12" namespace="http://user.template.entity.bullhorn.com/" />
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=27" namespace="http://client.template.entity.bullhorn.com/" />
+  <xs:complexType name="apiGetFileResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fileData" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="session" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="apiGetNoteReferencesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityList" nillable="true" type="ns1:entityNameIdPair" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiEventsSubscribeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="subscriptionMetaData" type="ns2:subscriptionMetaData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetUserTypesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="userTypeDtos" nillable="true" type="ns3:userTypeDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityFilesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="apiEntityMetas" nillable="true" type="ns4:fileMeta" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetUserSamlInformationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="atsIssuer" type="xs:string" />
+          <xs:element minOccurs="0" name="atsNameID" type="xs:string" />
+          <xs:element minOccurs="0" name="mobileIssuer" type="xs:string" />
+          <xs:element minOccurs="0" name="mobileNameID" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiAddFileResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityTemplateIdsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ids" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityTemplateDataIdsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ids" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiQueryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ids" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetViewLayoutResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="viewLayout" type="ns4:viewLayout" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiEventsCountResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element name="count" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetUserDepartmentIdsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="departmentIds" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiAssociateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityFieldMapsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="fieldMaps" nillable="true" type="ns4:apiFieldMap" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEditHistoryResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="editHistories" nillable="true" type="ns5:apiEditHistory" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiSaveResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dto" type="ns6:abstractDto" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="validationErrors" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiEventsGetEventsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="results" type="ns7:getEventsResults" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityTemplateDataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element name="attributes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:int" />
+                      <xs:element minOccurs="0" name="value" type="xs:anyType" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="dataId" type="xs:int" />
+          <xs:element minOccurs="0" name="targetEntityId" type="xs:int" />
+          <xs:element minOccurs="0" name="templateId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityNotesResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ids" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetAssociationIdsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ids" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiAddNoteReferenceResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiEventsUnsubscribeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element name="unsubscribed" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiDeleteFileResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetDepartmentUserIdsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="userIds" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiUnassociateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiFindMultipleResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="dtos" nillable="true" type="ns6:abstractDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiFindResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dto" type="ns6:abstractDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetUserPrimaryDepartmentIdResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="departmentId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiStartSessionResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element name="corporationId" type="xs:int" />
+          <xs:element name="userId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiParseResumeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="diagnostics" type="xs:string" />
+          <xs:element minOccurs="0" name="hrXml" type="xs:string" />
+          <xs:element name="success" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiRemoveNoteReferenceResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetJobOrderTemplateMetadataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" nillable="true" type="ns8:jobOrderTemplateAttributeDto" />
+          <xs:element minOccurs="0" name="template" type="ns8:jobOrderTemplateDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiUpdateFileResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiEventsGetLastRequestIdResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element name="lastRequestId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetEntityMetadataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="apiEntityMeta" type="ns4:apiEntityMeta" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetUserTemplateMetadataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" nillable="true" type="ns9:userTemplateAttributeDto" />
+          <xs:element minOccurs="0" name="template" type="ns9:userTemplateDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="apiGetClientCorporationTemplateMetadataResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:apiResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="attributes" nillable="true" type="ns10:clientCorporationTemplateAttributeDto" />
+          <xs:element minOccurs="0" name="template" type="ns10:clientCorporationTemplateDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

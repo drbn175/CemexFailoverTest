@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://lists.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://lists.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="businessSectorDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:businessSectorDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="businessSectorDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="businessSectorID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="categoryDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:categoryDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="categoryDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="externalID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="occupation" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="countryDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:countryDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="countryDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string" />
+          <xs:element minOccurs="0" name="countryID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="skillDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:skillDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="skillDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="skillID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="specialtyDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:specialtyDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="specialtyDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="parentCategoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="specialtyID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="stateDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:stateDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="stateDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string" />
+          <xs:element minOccurs="0" name="countryID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="stateID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timeUnitDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:timeUnitDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="timeUnitDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="timeMarker" type="xs:int" />
+          <xs:element minOccurs="0" name="timeUnitID" type="xs:int" />
+          <xs:element minOccurs="0" name="weekDay" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="businessSectorApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="privateLabels" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="businessSectorApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="businessSectorID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="categoryApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="privateLabels" />
+      <xs:enumeration value="skills" />
+      <xs:enumeration value="specialties" />
+      <xs:enumeration value="userTemplates" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="categoryApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="externalID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="occupation" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="countryApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="states" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="countryApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="countryID" />
+      <xs:enumeration value="code" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="skillApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="categories" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="skillApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="skillID" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="specialtyApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="specialtyID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="parentCategoryID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stateApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="stateID" />
+      <xs:enumeration value="code" />
+      <xs:enumeration value="countryID" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timeUnitApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="timeUnitID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="timeMarker" />
+      <xs:enumeration value="weekDay" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

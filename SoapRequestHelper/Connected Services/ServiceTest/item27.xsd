@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://event.dataevent.bullhorn.com/" targetNamespace="http://event.dataevent.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="dataEvent" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="eventId" type="xs:string" />
+      <xs:element name="eventMetadata">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="eventTimestamp" type="xs:long" />
+      <xs:element minOccurs="0" name="eventType" type="tns:dataEventType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="entityEvent" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:dataEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="entityEventType" type="tns:entityEventType" />
+          <xs:element minOccurs="0" name="entityId" type="xs:anyType" />
+          <xs:element minOccurs="0" name="entityName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="entityInsertedEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:entityEvent">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="entityDeletedEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:entityEvent">
+        <xs:sequence>
+          <xs:element name="associatedEntityInfo">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:string" />
+                      <xs:element minOccurs="0" name="value" type="tns:entityDeleteEventListWrapper" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="entityDeleteEventListWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="values" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="entityUpdatedEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:entityEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="updatedProperties" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="jobMatchSearchEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:dataEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="candidateIds" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="criteria" type="xs:string" />
+          <xs:element name="jobPostingId" type="xs:int" />
+          <xs:element minOccurs="0" name="source" type="tns:jobMatchSearchSource" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="fieldMapChangeEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:dataEvent">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="fieldMapIds" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="canvasEvent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:dataEvent">
+        <xs:sequence>
+          <xs:element name="corporationId" type="xs:int" />
+          <xs:element minOccurs="0" name="corporationName" type="xs:string" />
+          <xs:element name="masterUserId" type="xs:int" />
+          <xs:element name="privateLabelId" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="entityEventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INSERTED" />
+      <xs:enumeration value="UPDATED" />
+      <xs:enumeration value="DELETED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dataEventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ENTITY" />
+      <xs:enumeration value="JOB_MATCH_SEARCH" />
+      <xs:enumeration value="FIELDMAP_CHANGE" />
+      <xs:enumeration value="CANVAS" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="jobMatchSearchSource">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BULLHORN" />
+      <xs:enumeration value="MONSTER" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

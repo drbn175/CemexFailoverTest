@@ -51,7 +51,6 @@ namespace SqlTransactionWatcher
                        foreach(Dictionary<string,object> record in blocked)
                         {
                             record.Add("ResourceId", db.ResourceId);
-                            record.Add("DataBaseConnection", db.DataBaseConnection);
                             record.Add("IsBlocked", db.IsBlocked);
                         }
                         await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(SqlTransactionWatcherSettings.LogAnalyticsWorkspaceId, logAnalyticsUrlFormat, SqlTransactionWatcherSettings.LogAnalyticsWorkspaceKey, logName, blocked.ToList());

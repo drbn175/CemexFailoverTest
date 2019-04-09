@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://note.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://note.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="noteDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:noteDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="noteDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="action" type="xs:string" />
+          <xs:element minOccurs="0" name="bhTimeStamp" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="commentingPersonID" type="xs:int" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="minutesSpent" type="xs:int" />
+          <xs:element minOccurs="0" name="noteID" type="xs:int" />
+          <xs:element minOccurs="0" name="personReferenceID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="noteEntityDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:noteEntityDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="noteEntityDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="noteEntityID" type="xs:int" />
+          <xs:element minOccurs="0" name="noteID" type="xs:int" />
+          <xs:element minOccurs="0" name="targetEntityID" type="xs:int" />
+          <xs:element minOccurs="0" name="targetEntityName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="noteApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="candidates" />
+      <xs:enumeration value="clientContacts" />
+      <xs:enumeration value="corporateUsers" />
+      <xs:enumeration value="entities" />
+      <xs:enumeration value="jobOrders" />
+      <xs:enumeration value="placements" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="noteApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noteID" />
+      <xs:enumeration value="action" />
+      <xs:enumeration value="bhTimeStamp" />
+      <xs:enumeration value="commentingPersonID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="minutesSpent" />
+      <xs:enumeration value="personReferenceID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="noteEntityApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noteEntityID" />
+      <xs:enumeration value="noteID" />
+      <xs:enumeration value="targetEntityID" />
+      <xs:enumeration value="targetEntityName" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

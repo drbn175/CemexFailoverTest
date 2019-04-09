@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://subscription.dataevent.bullhorn.com/" xmlns:ns1="http://event.dataevent.bullhorn.com/" targetNamespace="http://subscription.dataevent.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=20" namespace="http://event.dataevent.bullhorn.com/" />
+  <xs:complexType name="subscriptionCriteria" abstract="true">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="entityEventSubscriptionCriteria">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:subscriptionCriteria">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityEventTypes" nillable="true" type="ns1:entityEventType" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="entityNames" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="jobMatchSearchEventSubscriptionCriteria">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:subscriptionCriteria">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="fieldMapChangeEventSubscriptionCriteria">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:subscriptionCriteria">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="subscriptionMetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="createdOn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="jmsSelector" type="xs:string" />
+      <xs:element name="lastRequestId" type="xs:long" />
+      <xs:element minOccurs="0" name="subscriptionId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

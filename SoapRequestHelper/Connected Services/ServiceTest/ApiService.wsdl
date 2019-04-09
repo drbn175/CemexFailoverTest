@@ -1,0 +1,1307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://apiservice.bullhorn.com/" name="ApiService" targetNamespace="http://apiservice.bullhorn.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=1" namespace="http://userwork.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=12" namespace="http://user.template.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=23" namespace="http://user.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=33" namespace="http://types.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=34" namespace="http://timecard.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=35" namespace="http://test.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=36" namespace="http://template.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=37" namespace="http://tearsheet.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=38" namespace="http://task.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=2" namespace="http://survey.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=3" namespace="http://subscription.dataevent.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=4" namespace="http://struct.apiservice.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=5" namespace="http://result.dataevent.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=6" namespace="http://result.apiservice.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=7" namespace="http://report.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=8" namespace="http://ratecard.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=9" namespace="http://query.apiservice.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=10" namespace="http://privatelabel.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=11" namespace="http://oauth.apiservice.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=13" namespace="http://note.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=14" namespace="http://meta.apiservice.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=15" namespace="http://lists.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=16" namespace="http://job.template.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=17" namespace="http://job.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=18" namespace="http://invoice.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=19" namespace="http://housing.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=20" namespace="http://event.dataevent.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=22" namespace="http://emb.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=24" namespace="http://edithistory.apiservice.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=25" namespace="http://distlist.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=26" namespace="http://corp.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=27" namespace="http://client.template.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=28" namespace="http://client.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=29" namespace="http://cert.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=30" namespace="http://candidate.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=31" namespace="http://appointment.entity.bullhorn.com/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=32" namespace="http://apiservice.bullhorn.com/" />
+    </xsd:schema>
+  </types>
+  <message name="getEntityNotes">
+    <part name="parameters" element="tns:getEntityNotes" />
+  </message>
+  <message name="getEntityNotesResponse">
+    <part name="parameters" element="tns:getEntityNotesResponse" />
+  </message>
+  <message name="getEntityNotesWhere">
+    <part name="parameters" element="tns:getEntityNotesWhere" />
+  </message>
+  <message name="getEntityNotesWhereResponse">
+    <part name="parameters" element="tns:getEntityNotesWhereResponse" />
+  </message>
+  <message name="getNoteReferences">
+    <part name="parameters" element="tns:getNoteReferences" />
+  </message>
+  <message name="getNoteReferencesResponse">
+    <part name="parameters" element="tns:getNoteReferencesResponse" />
+  </message>
+  <message name="addNoteReference">
+    <part name="parameters" element="tns:addNoteReference" />
+  </message>
+  <message name="addNoteReferenceResponse">
+    <part name="parameters" element="tns:addNoteReferenceResponse" />
+  </message>
+  <message name="removeNoteReference">
+    <part name="parameters" element="tns:removeNoteReference" />
+  </message>
+  <message name="removeNoteReferenceResponse">
+    <part name="parameters" element="tns:removeNoteReferenceResponse" />
+  </message>
+  <message name="getEntityMetadata">
+    <part name="parameters" element="tns:getEntityMetadata" />
+  </message>
+  <message name="getEntityMetadataResponse">
+    <part name="parameters" element="tns:getEntityMetadataResponse" />
+  </message>
+  <message name="getJobOrderMetadata">
+    <part name="parameters" element="tns:getJobOrderMetadata" />
+  </message>
+  <message name="getJobOrderMetadataResponse">
+    <part name="parameters" element="tns:getJobOrderMetadataResponse" />
+  </message>
+  <message name="getEntityFiles">
+    <part name="parameters" element="tns:getEntityFiles" />
+  </message>
+  <message name="getEntityFilesResponse">
+    <part name="parameters" element="tns:getEntityFilesResponse" />
+  </message>
+  <message name="addFile">
+    <part name="parameters" element="tns:addFile" />
+  </message>
+  <message name="addFileResponse">
+    <part name="parameters" element="tns:addFileResponse" />
+  </message>
+  <message name="updateFile">
+    <part name="parameters" element="tns:updateFile" />
+  </message>
+  <message name="updateFileResponse">
+    <part name="parameters" element="tns:updateFileResponse" />
+  </message>
+  <message name="parseResume">
+    <part name="parameters" element="tns:parseResume" />
+  </message>
+  <message name="parseResumeResponse">
+    <part name="parameters" element="tns:parseResumeResponse" />
+  </message>
+  <message name="getApplicationServerHost">
+    <part name="parameters" element="tns:getApplicationServerHost" />
+  </message>
+  <message name="getApplicationServerHostResponse">
+    <part name="parameters" element="tns:getApplicationServerHostResponse" />
+  </message>
+  <message name="getCertifications">
+    <part name="parameters" element="tns:getCertifications" />
+  </message>
+  <message name="getCertificationsResponse">
+    <part name="parameters" element="tns:getCertificationsResponse" />
+  </message>
+  <message name="eventsSubscribe">
+    <part name="parameters" element="tns:eventsSubscribe" />
+  </message>
+  <message name="eventsSubscribeResponse">
+    <part name="parameters" element="tns:eventsSubscribeResponse" />
+  </message>
+  <message name="eventsUnsubscribe">
+    <part name="parameters" element="tns:eventsUnsubscribe" />
+  </message>
+  <message name="eventsUnsubscribeResponse">
+    <part name="parameters" element="tns:eventsUnsubscribeResponse" />
+  </message>
+  <message name="eventsGetEvents">
+    <part name="parameters" element="tns:eventsGetEvents" />
+  </message>
+  <message name="eventsGetEventsResponse">
+    <part name="parameters" element="tns:eventsGetEventsResponse" />
+  </message>
+  <message name="eventsGetLastRequestId">
+    <part name="parameters" element="tns:eventsGetLastRequestId" />
+  </message>
+  <message name="eventsGetLastRequestIdResponse">
+    <part name="parameters" element="tns:eventsGetLastRequestIdResponse" />
+  </message>
+  <message name="eventsRegetEvents">
+    <part name="parameters" element="tns:eventsRegetEvents" />
+  </message>
+  <message name="eventsRegetEventsResponse">
+    <part name="parameters" element="tns:eventsRegetEventsResponse" />
+  </message>
+  <message name="eventsCount">
+    <part name="parameters" element="tns:eventsCount" />
+  </message>
+  <message name="eventsCountResponse">
+    <part name="parameters" element="tns:eventsCountResponse" />
+  </message>
+  <message name="_eventsGenerateBogusEvents">
+    <part name="parameters" element="tns:_eventsGenerateBogusEvents" />
+  </message>
+  <message name="_eventsGenerateBogusEventsResponse">
+    <part name="parameters" element="tns:_eventsGenerateBogusEventsResponse" />
+  </message>
+  <message name="_eventsGenerateBogusJobMatchSearchEvents">
+    <part name="parameters" element="tns:_eventsGenerateBogusJobMatchSearchEvents" />
+  </message>
+  <message name="_eventsGenerateBogusJobMatchSearchEventsResponse">
+    <part name="parameters" element="tns:_eventsGenerateBogusJobMatchSearchEventsResponse" />
+  </message>
+  <message name="_eventsGenerateBogusFieldMapChangeEvents">
+    <part name="parameters" element="tns:_eventsGenerateBogusFieldMapChangeEvents" />
+  </message>
+  <message name="_eventsGenerateBogusFieldMapChangeEventsResponse">
+    <part name="parameters" element="tns:_eventsGenerateBogusFieldMapChangeEventsResponse" />
+  </message>
+  <message name="getEditHistoryByTransactionId">
+    <part name="parameters" element="tns:getEditHistoryByTransactionId" />
+  </message>
+  <message name="getEditHistoryByTransactionIdResponse">
+    <part name="parameters" element="tns:getEditHistoryByTransactionIdResponse" />
+  </message>
+  <message name="getEditHistoryByDates">
+    <part name="parameters" element="tns:getEditHistoryByDates" />
+  </message>
+  <message name="getEditHistoryByDatesResponse">
+    <part name="parameters" element="tns:getEditHistoryByDatesResponse" />
+  </message>
+  <message name="getJobOrderTemplateIds">
+    <part name="parameters" element="tns:getJobOrderTemplateIds" />
+  </message>
+  <message name="getJobOrderTemplateIdsResponse">
+    <part name="parameters" element="tns:getJobOrderTemplateIdsResponse" />
+  </message>
+  <message name="getJobOrderTemplateMetadata">
+    <part name="parameters" element="tns:getJobOrderTemplateMetadata" />
+  </message>
+  <message name="getJobOrderTemplateMetadataResponse">
+    <part name="parameters" element="tns:getJobOrderTemplateMetadataResponse" />
+  </message>
+  <message name="getJobOrderTemplateDataIds">
+    <part name="parameters" element="tns:getJobOrderTemplateDataIds" />
+  </message>
+  <message name="getJobOrderTemplateDataIdsResponse">
+    <part name="parameters" element="tns:getJobOrderTemplateDataIdsResponse" />
+  </message>
+  <message name="getJobOrderTemplateData">
+    <part name="parameters" element="tns:getJobOrderTemplateData" />
+  </message>
+  <message name="getJobOrderTemplateDataResponse">
+    <part name="parameters" element="tns:getJobOrderTemplateDataResponse" />
+  </message>
+  <message name="getUserTemplateIds">
+    <part name="parameters" element="tns:getUserTemplateIds" />
+  </message>
+  <message name="getUserTemplateIdsResponse">
+    <part name="parameters" element="tns:getUserTemplateIdsResponse" />
+  </message>
+  <message name="getUserTemplateMetadata">
+    <part name="parameters" element="tns:getUserTemplateMetadata" />
+  </message>
+  <message name="getUserTemplateMetadataResponse">
+    <part name="parameters" element="tns:getUserTemplateMetadataResponse" />
+  </message>
+  <message name="getUserTemplateDataIds">
+    <part name="parameters" element="tns:getUserTemplateDataIds" />
+  </message>
+  <message name="getUserTemplateDataIdsResponse">
+    <part name="parameters" element="tns:getUserTemplateDataIdsResponse" />
+  </message>
+  <message name="getUserTemplateData">
+    <part name="parameters" element="tns:getUserTemplateData" />
+  </message>
+  <message name="getUserTemplateDataResponse">
+    <part name="parameters" element="tns:getUserTemplateDataResponse" />
+  </message>
+  <message name="getClientCorporationTemplateIds">
+    <part name="parameters" element="tns:getClientCorporationTemplateIds" />
+  </message>
+  <message name="getClientCorporationTemplateIdsResponse">
+    <part name="parameters" element="tns:getClientCorporationTemplateIdsResponse" />
+  </message>
+  <message name="getClientCorporationTemplateMetadata">
+    <part name="parameters" element="tns:getClientCorporationTemplateMetadata" />
+  </message>
+  <message name="getClientCorporationTemplateMetadataResponse">
+    <part name="parameters" element="tns:getClientCorporationTemplateMetadataResponse" />
+  </message>
+  <message name="getClientCorporationTemplateDataIds">
+    <part name="parameters" element="tns:getClientCorporationTemplateDataIds" />
+  </message>
+  <message name="getClientCorporationTemplateDataIdsResponse">
+    <part name="parameters" element="tns:getClientCorporationTemplateDataIdsResponse" />
+  </message>
+  <message name="getClientCorporationTemplateData">
+    <part name="parameters" element="tns:getClientCorporationTemplateData" />
+  </message>
+  <message name="getClientCorporationTemplateDataResponse">
+    <part name="parameters" element="tns:getClientCorporationTemplateDataResponse" />
+  </message>
+  <message name="getEditHistory">
+    <part name="parameters" element="tns:getEditHistory" />
+  </message>
+  <message name="getEditHistoryResponse">
+    <part name="parameters" element="tns:getEditHistoryResponse" />
+  </message>
+  <message name="deleteFile">
+    <part name="parameters" element="tns:deleteFile" />
+  </message>
+  <message name="deleteFileResponse">
+    <part name="parameters" element="tns:deleteFileResponse" />
+  </message>
+  <message name="getFile">
+    <part name="parameters" element="tns:getFile" />
+  </message>
+  <message name="getFileResponse">
+    <part name="parameters" element="tns:getFileResponse" />
+  </message>
+  <message name="associate">
+    <part name="parameters" element="tns:associate" />
+  </message>
+  <message name="associateResponse">
+    <part name="parameters" element="tns:associateResponse" />
+  </message>
+  <message name="findMultiple">
+    <part name="parameters" element="tns:findMultiple" />
+  </message>
+  <message name="findMultipleResponse">
+    <part name="parameters" element="tns:findMultipleResponse" />
+  </message>
+  <message name="deleteById">
+    <part name="parameters" element="tns:deleteById" />
+  </message>
+  <message name="deleteByIdResponse">
+    <part name="parameters" element="tns:deleteByIdResponse" />
+  </message>
+  <message name="getAssociationIds">
+    <part name="parameters" element="tns:getAssociationIds" />
+  </message>
+  <message name="getAssociationIdsResponse">
+    <part name="parameters" element="tns:getAssociationIdsResponse" />
+  </message>
+  <message name="associateMultiple">
+    <part name="parameters" element="tns:associateMultiple" />
+  </message>
+  <message name="associateMultipleResponse">
+    <part name="parameters" element="tns:associateMultipleResponse" />
+  </message>
+  <message name="unassociate">
+    <part name="parameters" element="tns:unassociate" />
+  </message>
+  <message name="unassociateResponse">
+    <part name="parameters" element="tns:unassociateResponse" />
+  </message>
+  <message name="unassociateMultiple">
+    <part name="parameters" element="tns:unassociateMultiple" />
+  </message>
+  <message name="unassociateMultipleResponse">
+    <part name="parameters" element="tns:unassociateMultipleResponse" />
+  </message>
+  <message name="getDepartmentUserIds">
+    <part name="parameters" element="tns:getDepartmentUserIds" />
+  </message>
+  <message name="getDepartmentUserIdsResponse">
+    <part name="parameters" element="tns:getDepartmentUserIdsResponse" />
+  </message>
+  <message name="getUserDepartmentIds">
+    <part name="parameters" element="tns:getUserDepartmentIds" />
+  </message>
+  <message name="getUserDepartmentIdsResponse">
+    <part name="parameters" element="tns:getUserDepartmentIdsResponse" />
+  </message>
+  <message name="getUserPrimaryDepartmentId">
+    <part name="parameters" element="tns:getUserPrimaryDepartmentId" />
+  </message>
+  <message name="getUserPrimaryDepartmentIdResponse">
+    <part name="parameters" element="tns:getUserPrimaryDepartmentIdResponse" />
+  </message>
+  <message name="getUserTypes">
+    <part name="parameters" element="tns:getUserTypes" />
+  </message>
+  <message name="getUserTypesResponse">
+    <part name="parameters" element="tns:getUserTypesResponse" />
+  </message>
+  <message name="getEntityFieldMaps">
+    <part name="parameters" element="tns:getEntityFieldMaps" />
+  </message>
+  <message name="getEntityFieldMapsResponse">
+    <part name="parameters" element="tns:getEntityFieldMapsResponse" />
+  </message>
+  <message name="getJobOrderFieldMaps">
+    <part name="parameters" element="tns:getJobOrderFieldMaps" />
+  </message>
+  <message name="getJobOrderFieldMapsResponse">
+    <part name="parameters" element="tns:getJobOrderFieldMapsResponse" />
+  </message>
+  <message name="getViewLayout">
+    <part name="parameters" element="tns:getViewLayout" />
+  </message>
+  <message name="getViewLayoutResponse">
+    <part name="parameters" element="tns:getViewLayoutResponse" />
+  </message>
+  <message name="getJobOrderViewLayout">
+    <part name="parameters" element="tns:getJobOrderViewLayout" />
+  </message>
+  <message name="getJobOrderViewLayoutResponse">
+    <part name="parameters" element="tns:getJobOrderViewLayoutResponse" />
+  </message>
+  <message name="_exportApiEnums">
+    <part name="parameters" element="tns:_exportApiEnums" />
+  </message>
+  <message name="_exportApiEnumsResponse">
+    <part name="parameters" element="tns:_exportApiEnumsResponse" />
+  </message>
+  <message name="getUserSamlInformation">
+    <part name="parameters" element="tns:getUserSamlInformation" />
+  </message>
+  <message name="getUserSamlInformationResponse">
+    <part name="parameters" element="tns:getUserSamlInformationResponse" />
+  </message>
+  <message name="find">
+    <part name="parameters" element="tns:find" />
+  </message>
+  <message name="findResponse">
+    <part name="parameters" element="tns:findResponse" />
+  </message>
+  <message name="save">
+    <part name="parameters" element="tns:save" />
+  </message>
+  <message name="saveResponse">
+    <part name="parameters" element="tns:saveResponse" />
+  </message>
+  <message name="delete">
+    <part name="parameters" element="tns:delete" />
+  </message>
+  <message name="deleteResponse">
+    <part name="parameters" element="tns:deleteResponse" />
+  </message>
+  <message name="query">
+    <part name="parameters" element="tns:query" />
+  </message>
+  <message name="queryResponse">
+    <part name="parameters" element="tns:queryResponse" />
+  </message>
+  <message name="startSession">
+    <part name="parameters" element="tns:startSession" />
+  </message>
+  <message name="startSessionResponse">
+    <part name="parameters" element="tns:startSessionResponse" />
+  </message>
+  <message name="startPartnerSession">
+    <part name="parameters" element="tns:startPartnerSession" />
+  </message>
+  <message name="startPartnerSessionResponse">
+    <part name="parameters" element="tns:startPartnerSessionResponse" />
+  </message>
+  <portType name="ApiService">
+    <operation name="getEntityNotes">
+      <input message="tns:getEntityNotes" />
+      <output message="tns:getEntityNotesResponse" />
+    </operation>
+    <operation name="getEntityNotesWhere">
+      <input message="tns:getEntityNotesWhere" />
+      <output message="tns:getEntityNotesWhereResponse" />
+    </operation>
+    <operation name="getNoteReferences">
+      <input message="tns:getNoteReferences" />
+      <output message="tns:getNoteReferencesResponse" />
+    </operation>
+    <operation name="addNoteReference">
+      <input message="tns:addNoteReference" />
+      <output message="tns:addNoteReferenceResponse" />
+    </operation>
+    <operation name="removeNoteReference">
+      <input message="tns:removeNoteReference" />
+      <output message="tns:removeNoteReferenceResponse" />
+    </operation>
+    <operation name="getEntityMetadata">
+      <input message="tns:getEntityMetadata" />
+      <output message="tns:getEntityMetadataResponse" />
+    </operation>
+    <operation name="getJobOrderMetadata">
+      <input message="tns:getJobOrderMetadata" />
+      <output message="tns:getJobOrderMetadataResponse" />
+    </operation>
+    <operation name="getEntityFiles">
+      <input message="tns:getEntityFiles" />
+      <output message="tns:getEntityFilesResponse" />
+    </operation>
+    <operation name="addFile">
+      <input message="tns:addFile" />
+      <output message="tns:addFileResponse" />
+    </operation>
+    <operation name="updateFile">
+      <input message="tns:updateFile" />
+      <output message="tns:updateFileResponse" />
+    </operation>
+    <operation name="parseResume">
+      <input message="tns:parseResume" />
+      <output message="tns:parseResumeResponse" />
+    </operation>
+    <operation name="getApplicationServerHost">
+      <input message="tns:getApplicationServerHost" />
+      <output message="tns:getApplicationServerHostResponse" />
+    </operation>
+    <operation name="getCertifications">
+      <input message="tns:getCertifications" />
+      <output message="tns:getCertificationsResponse" />
+    </operation>
+    <operation name="eventsSubscribe">
+      <input message="tns:eventsSubscribe" />
+      <output message="tns:eventsSubscribeResponse" />
+    </operation>
+    <operation name="eventsUnsubscribe">
+      <input message="tns:eventsUnsubscribe" />
+      <output message="tns:eventsUnsubscribeResponse" />
+    </operation>
+    <operation name="eventsGetEvents">
+      <input message="tns:eventsGetEvents" />
+      <output message="tns:eventsGetEventsResponse" />
+    </operation>
+    <operation name="eventsGetLastRequestId">
+      <input message="tns:eventsGetLastRequestId" />
+      <output message="tns:eventsGetLastRequestIdResponse" />
+    </operation>
+    <operation name="eventsRegetEvents">
+      <input message="tns:eventsRegetEvents" />
+      <output message="tns:eventsRegetEventsResponse" />
+    </operation>
+    <operation name="eventsCount">
+      <input message="tns:eventsCount" />
+      <output message="tns:eventsCountResponse" />
+    </operation>
+    <operation name="_eventsGenerateBogusEvents">
+      <input message="tns:_eventsGenerateBogusEvents" />
+      <output message="tns:_eventsGenerateBogusEventsResponse" />
+    </operation>
+    <operation name="_eventsGenerateBogusJobMatchSearchEvents">
+      <input message="tns:_eventsGenerateBogusJobMatchSearchEvents" />
+      <output message="tns:_eventsGenerateBogusJobMatchSearchEventsResponse" />
+    </operation>
+    <operation name="_eventsGenerateBogusFieldMapChangeEvents">
+      <input message="tns:_eventsGenerateBogusFieldMapChangeEvents" />
+      <output message="tns:_eventsGenerateBogusFieldMapChangeEventsResponse" />
+    </operation>
+    <operation name="getEditHistoryByTransactionId">
+      <input message="tns:getEditHistoryByTransactionId" />
+      <output message="tns:getEditHistoryByTransactionIdResponse" />
+    </operation>
+    <operation name="getEditHistoryByDates">
+      <input message="tns:getEditHistoryByDates" />
+      <output message="tns:getEditHistoryByDatesResponse" />
+    </operation>
+    <operation name="getJobOrderTemplateIds">
+      <input message="tns:getJobOrderTemplateIds" />
+      <output message="tns:getJobOrderTemplateIdsResponse" />
+    </operation>
+    <operation name="getJobOrderTemplateMetadata">
+      <input message="tns:getJobOrderTemplateMetadata" />
+      <output message="tns:getJobOrderTemplateMetadataResponse" />
+    </operation>
+    <operation name="getJobOrderTemplateDataIds">
+      <input message="tns:getJobOrderTemplateDataIds" />
+      <output message="tns:getJobOrderTemplateDataIdsResponse" />
+    </operation>
+    <operation name="getJobOrderTemplateData">
+      <input message="tns:getJobOrderTemplateData" />
+      <output message="tns:getJobOrderTemplateDataResponse" />
+    </operation>
+    <operation name="getUserTemplateIds">
+      <input message="tns:getUserTemplateIds" />
+      <output message="tns:getUserTemplateIdsResponse" />
+    </operation>
+    <operation name="getUserTemplateMetadata">
+      <input message="tns:getUserTemplateMetadata" />
+      <output message="tns:getUserTemplateMetadataResponse" />
+    </operation>
+    <operation name="getUserTemplateDataIds">
+      <input message="tns:getUserTemplateDataIds" />
+      <output message="tns:getUserTemplateDataIdsResponse" />
+    </operation>
+    <operation name="getUserTemplateData">
+      <input message="tns:getUserTemplateData" />
+      <output message="tns:getUserTemplateDataResponse" />
+    </operation>
+    <operation name="getClientCorporationTemplateIds">
+      <input message="tns:getClientCorporationTemplateIds" />
+      <output message="tns:getClientCorporationTemplateIdsResponse" />
+    </operation>
+    <operation name="getClientCorporationTemplateMetadata">
+      <input message="tns:getClientCorporationTemplateMetadata" />
+      <output message="tns:getClientCorporationTemplateMetadataResponse" />
+    </operation>
+    <operation name="getClientCorporationTemplateDataIds">
+      <input message="tns:getClientCorporationTemplateDataIds" />
+      <output message="tns:getClientCorporationTemplateDataIdsResponse" />
+    </operation>
+    <operation name="getClientCorporationTemplateData">
+      <input message="tns:getClientCorporationTemplateData" />
+      <output message="tns:getClientCorporationTemplateDataResponse" />
+    </operation>
+    <operation name="getEditHistory">
+      <input message="tns:getEditHistory" />
+      <output message="tns:getEditHistoryResponse" />
+    </operation>
+    <operation name="deleteFile">
+      <input message="tns:deleteFile" />
+      <output message="tns:deleteFileResponse" />
+    </operation>
+    <operation name="getFile">
+      <input message="tns:getFile" />
+      <output message="tns:getFileResponse" />
+    </operation>
+    <operation name="associate">
+      <input message="tns:associate" />
+      <output message="tns:associateResponse" />
+    </operation>
+    <operation name="findMultiple">
+      <input message="tns:findMultiple" />
+      <output message="tns:findMultipleResponse" />
+    </operation>
+    <operation name="deleteById">
+      <input message="tns:deleteById" />
+      <output message="tns:deleteByIdResponse" />
+    </operation>
+    <operation name="getAssociationIds">
+      <input message="tns:getAssociationIds" />
+      <output message="tns:getAssociationIdsResponse" />
+    </operation>
+    <operation name="associateMultiple">
+      <input message="tns:associateMultiple" />
+      <output message="tns:associateMultipleResponse" />
+    </operation>
+    <operation name="unassociate">
+      <input message="tns:unassociate" />
+      <output message="tns:unassociateResponse" />
+    </operation>
+    <operation name="unassociateMultiple">
+      <input message="tns:unassociateMultiple" />
+      <output message="tns:unassociateMultipleResponse" />
+    </operation>
+    <operation name="getDepartmentUserIds">
+      <input message="tns:getDepartmentUserIds" />
+      <output message="tns:getDepartmentUserIdsResponse" />
+    </operation>
+    <operation name="getUserDepartmentIds">
+      <input message="tns:getUserDepartmentIds" />
+      <output message="tns:getUserDepartmentIdsResponse" />
+    </operation>
+    <operation name="getUserPrimaryDepartmentId">
+      <input message="tns:getUserPrimaryDepartmentId" />
+      <output message="tns:getUserPrimaryDepartmentIdResponse" />
+    </operation>
+    <operation name="getUserTypes">
+      <input message="tns:getUserTypes" />
+      <output message="tns:getUserTypesResponse" />
+    </operation>
+    <operation name="getEntityFieldMaps">
+      <input message="tns:getEntityFieldMaps" />
+      <output message="tns:getEntityFieldMapsResponse" />
+    </operation>
+    <operation name="getJobOrderFieldMaps">
+      <input message="tns:getJobOrderFieldMaps" />
+      <output message="tns:getJobOrderFieldMapsResponse" />
+    </operation>
+    <operation name="getViewLayout">
+      <input message="tns:getViewLayout" />
+      <output message="tns:getViewLayoutResponse" />
+    </operation>
+    <operation name="getJobOrderViewLayout">
+      <input message="tns:getJobOrderViewLayout" />
+      <output message="tns:getJobOrderViewLayoutResponse" />
+    </operation>
+    <operation name="_exportApiEnums">
+      <input message="tns:_exportApiEnums" />
+      <output message="tns:_exportApiEnumsResponse" />
+    </operation>
+    <operation name="getUserSamlInformation">
+      <input message="tns:getUserSamlInformation" />
+      <output message="tns:getUserSamlInformationResponse" />
+    </operation>
+    <operation name="find">
+      <input message="tns:find" />
+      <output message="tns:findResponse" />
+    </operation>
+    <operation name="save">
+      <input message="tns:save" />
+      <output message="tns:saveResponse" />
+    </operation>
+    <operation name="delete">
+      <input message="tns:delete" />
+      <output message="tns:deleteResponse" />
+    </operation>
+    <operation name="query">
+      <input message="tns:query" />
+      <output message="tns:queryResponse" />
+    </operation>
+    <operation name="startSession">
+      <input message="tns:startSession" />
+      <output message="tns:startSessionResponse" />
+    </operation>
+    <operation name="startPartnerSession">
+      <input message="tns:startPartnerSession" />
+      <output message="tns:startPartnerSessionResponse" />
+    </operation>
+  </portType>
+  <binding name="ApiServicePortBinding" type="tns:ApiService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getEntityNotes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEntityNotesWhere">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getNoteReferences">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addNoteReference">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="removeNoteReference">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEntityMetadata">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderMetadata">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEntityFiles">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addFile">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateFile">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="parseResume">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getApplicationServerHost">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCertifications">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eventsSubscribe">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eventsUnsubscribe">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eventsGetEvents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eventsGetLastRequestId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eventsRegetEvents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eventsCount">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_eventsGenerateBogusEvents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_eventsGenerateBogusJobMatchSearchEvents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_eventsGenerateBogusFieldMapChangeEvents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEditHistoryByTransactionId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEditHistoryByDates">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderTemplateIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderTemplateMetadata">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderTemplateDataIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderTemplateData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserTemplateIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserTemplateMetadata">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserTemplateDataIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserTemplateData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getClientCorporationTemplateIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getClientCorporationTemplateMetadata">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getClientCorporationTemplateDataIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getClientCorporationTemplateData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEditHistory">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteFile">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getFile">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="associate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="findMultiple">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="deleteById">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAssociationIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="associateMultiple">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="unassociate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="unassociateMultiple">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getDepartmentUserIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserDepartmentIds">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserPrimaryDepartmentId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserTypes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getEntityFieldMaps">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderFieldMaps">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getViewLayout">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getJobOrderViewLayout">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_exportApiEnums">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUserSamlInformation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="find">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="save">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="delete">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="query">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="startSession">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="startPartnerSession">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ApiService">
+    <port name="ApiServicePort" binding="tns:ApiServicePortBinding">
+      <soap:address location="https://api.bullhornstaffing.com/webservices-2.6/" />
+    </port>
+  </service>
+</definitions>

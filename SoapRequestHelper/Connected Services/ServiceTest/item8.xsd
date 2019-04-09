@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ratecard.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://ratecard.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="rateCardDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:rateCardDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="rateCardDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="businessSector" type="xs:string" />
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="customRate1" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate10" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate2" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate3" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate4" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate5" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate6" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate7" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate8" type="xs:double" />
+          <xs:element minOccurs="0" name="customRate9" type="xs:double" />
+          <xs:element minOccurs="0" name="dateEffective" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="isDefault" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="lastModifyingUserID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="overtimeRate" type="xs:double" />
+          <xs:element minOccurs="0" name="rate" type="xs:double" />
+          <xs:element minOccurs="0" name="rateCardCategory" type="xs:string" />
+          <xs:element minOccurs="0" name="rateCardID" type="xs:int" />
+          <xs:element minOccurs="0" name="shiftID" type="xs:int" />
+          <xs:element minOccurs="0" name="shortName" type="xs:string" />
+          <xs:element minOccurs="0" name="skillID" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="rateCardApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="clientCorporations" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="rateCardApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="rateCardID" />
+      <xs:enumeration value="businessSector" />
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="customRate1" />
+      <xs:enumeration value="customRate10" />
+      <xs:enumeration value="customRate2" />
+      <xs:enumeration value="customRate3" />
+      <xs:enumeration value="customRate4" />
+      <xs:enumeration value="customRate5" />
+      <xs:enumeration value="customRate6" />
+      <xs:enumeration value="customRate7" />
+      <xs:enumeration value="customRate8" />
+      <xs:enumeration value="customRate9" />
+      <xs:enumeration value="dateEffective" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="isDefault" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="lastModifyingUserID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="overtimeRate" />
+      <xs:enumeration value="rate" />
+      <xs:enumeration value="rateCardCategory" />
+      <xs:enumeration value="shiftID" />
+      <xs:enumeration value="shortName" />
+      <xs:enumeration value="skillID" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://query.apiservice.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="dtoQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alias" type="xs:string" />
+      <xs:element name="distinct" type="xs:boolean" />
+      <xs:element minOccurs="0" name="entityName" type="xs:string" />
+      <xs:element minOccurs="0" name="maxResults" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="orderBys" nillable="true" type="xs:string" />
+      <xs:element name="parameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="xs:anyType" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="where" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

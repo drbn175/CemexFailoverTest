@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://privatelabel.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://privatelabel.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="privateLabelDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:privateLabelDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="privateLabelDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="applicationID" type="xs:int" />
+          <xs:element minOccurs="0" name="attributeList" type="xs:string" />
+          <xs:element minOccurs="0" name="coBrandedTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="coBrandedURL" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="defaultWebLeadRecruiterID" type="xs:int" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="enabled" type="xs:int" />
+          <xs:element minOccurs="0" name="footerHTML" type="xs:string" />
+          <xs:element minOccurs="0" name="headerHTML" type="xs:string" />
+          <xs:element minOccurs="0" name="keyWords" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="noLookAndFeel" type="xs:int" />
+          <xs:element minOccurs="0" name="onLoadScript" type="xs:string" />
+          <xs:element minOccurs="0" name="parentPrivateLabelID" type="xs:int" />
+          <xs:element minOccurs="0" name="privateLabelID" type="xs:int" />
+          <xs:element minOccurs="0" name="splashPage" type="xs:string" />
+          <xs:element minOccurs="0" name="styleHTML" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+          <xs:element minOccurs="0" name="url" type="xs:string" />
+          <xs:element minOccurs="0" name="userTypeID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="privateLabelApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="businessSectors" />
+      <xs:enumeration value="certifications" />
+      <xs:enumeration value="childPrivateLabels" />
+      <xs:enumeration value="corporateUsers" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="privateLabelApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="privateLabelID" />
+      <xs:enumeration value="applicationID" />
+      <xs:enumeration value="attributeList" />
+      <xs:enumeration value="coBrandedTitle" />
+      <xs:enumeration value="coBrandedURL" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="defaultWebLeadRecruiterID" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="footerHTML" />
+      <xs:enumeration value="headerHTML" />
+      <xs:enumeration value="keyWords" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="noLookAndFeel" />
+      <xs:enumeration value="onLoadScript" />
+      <xs:enumeration value="parentPrivateLabelID" />
+      <xs:enumeration value="splashPage" />
+      <xs:enumeration value="styleHTML" />
+      <xs:enumeration value="title" />
+      <xs:enumeration value="type" />
+      <xs:enumeration value="url" />
+      <xs:enumeration value="userTypeID" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

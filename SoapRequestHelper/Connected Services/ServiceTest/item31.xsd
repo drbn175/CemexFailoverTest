@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://report.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://report.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="reportDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reportDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="cognosType" type="xs:string" />
+          <xs:element minOccurs="0" name="dashboard" type="xs:boolean" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="oldReportID" type="xs:int" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="packageName" type="xs:string" />
+          <xs:element minOccurs="0" name="path" type="xs:string" />
+          <xs:element minOccurs="0" name="reportID" type="xs:int" />
+          <xs:element minOccurs="0" name="reportJar" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="reportRTF" type="xs:string" />
+          <xs:element minOccurs="0" name="reportXML" type="xs:string" />
+          <xs:element minOccurs="0" name="sqlData" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+          <xs:element minOccurs="0" name="version" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportCategoryDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reportCategoryDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportCategoryDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="reportCategoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportCriteriaDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reportCriteriaDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportCriteriaDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="allowMultiple" type="xs:boolean" />
+          <xs:element minOccurs="0" name="columnName" type="xs:string" />
+          <xs:element minOccurs="0" name="dataFormat" type="xs:string" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="display" type="xs:string" />
+          <xs:element minOccurs="0" name="editType" type="xs:string" />
+          <xs:element minOccurs="0" name="hint" type="xs:string" />
+          <xs:element minOccurs="0" name="isHidden" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="limit" type="xs:int" />
+          <xs:element minOccurs="0" name="lineDelimiter" type="xs:string" />
+          <xs:element minOccurs="0" name="reportCriteriaID" type="xs:int" />
+          <xs:element minOccurs="0" name="reportID" type="xs:int" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="valueList" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportOutputDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reportOutputDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="reportOutputDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="reportOutputID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="reportApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="criteria" />
+      <xs:enumeration value="entitlements" />
+      <xs:enumeration value="outputs" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="reportApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="reportID" />
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="cognosType" />
+      <xs:enumeration value="dashboard" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="oldReportID" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="packageName" />
+      <xs:enumeration value="path" />
+      <xs:enumeration value="reportJar" />
+      <xs:enumeration value="reportRTF" />
+      <xs:enumeration value="reportXML" />
+      <xs:enumeration value="sqlData" />
+      <xs:enumeration value="type" />
+      <xs:enumeration value="version" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="reportCategoryApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="reports" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="reportCategoryApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="reportCategoryID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="sortOrder" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="reportCriteriaApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="reportCriteriaID" />
+      <xs:enumeration value="allowMultiple" />
+      <xs:enumeration value="columnName" />
+      <xs:enumeration value="dataFormat" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="display" />
+      <xs:enumeration value="editType" />
+      <xs:enumeration value="hint" />
+      <xs:enumeration value="isHidden" />
+      <xs:enumeration value="isRequired" />
+      <xs:enumeration value="limit" />
+      <xs:enumeration value="lineDelimiter" />
+      <xs:enumeration value="reportID" />
+      <xs:enumeration value="sortOrder" />
+      <xs:enumeration value="valueList" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="reportOutputApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="reports" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="reportOutputApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="reportOutputID" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

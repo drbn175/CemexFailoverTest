@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WebAppWatcher
 {
     public class WebAppWatcherSettings
     {
+       
         public List<WebApiEntity> WebApis
         {
             get; set;
@@ -39,12 +45,35 @@ namespace WebAppWatcher
                 return _logAnalyticsWorkspaceKey;
             }
         }
+
+        public string LogName { get; set; }
+        public string LogAnalyticsUrlFormat { get; set; }
+        
+        private List<WebApiCookie> customCookies;
+
+       public List<WebApiCookie> CustomCookies { get {
+                if (customCookies == null)
+                {
+                    customCookies = JsonConvert.DeserializeObject<List<WebApiCookie>>(Environment.GetEnvironmentVariable("Cookies"));
+                }
+
+                return customCookies;
+            }
+        }
+        
     }
     public class WebApiEntity
     {
         public string ResourceId { get; set; }
         public string Url { get; set; }
+        public bool IsSoap { get; set; }
         public bool IsDown { get; set; }
         
+    }
+
+    public class WebApiCookie
+    {
+        public string name { get; set; }
+        public string value { get; set; }
     }
 }

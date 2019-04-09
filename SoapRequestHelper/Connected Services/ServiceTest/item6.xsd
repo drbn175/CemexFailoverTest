@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://invoice.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://invoice.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="invoiceDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:invoiceDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amountPaid" type="xs:decimal" />
+          <xs:element minOccurs="0" name="clientCorporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="costCenter" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateDue" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateExported" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateInvoice" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="fileExportID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceBatchID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceID" type="xs:int" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isExported" type="xs:boolean" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="outstandingBalance" type="xs:decimal" />
+          <xs:element minOccurs="0" name="recipientUserID" type="xs:int" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="terms" type="xs:string" />
+          <xs:element minOccurs="0" name="userID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceGroupDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:invoiceGroupDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceGroupDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="corporationID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="invoiceGroupID" type="xs:int" />
+          <xs:element minOccurs="0" name="lastModifyingUserID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceItemDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:invoiceItemDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceItemDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="invoiceID" type="xs:int" />
+          <xs:element minOccurs="0" name="invoiceItemID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="payPeriod" type="xs:string" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="quantity" type="xs:double" />
+          <xs:element minOccurs="0" name="rate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="taxRate" type="xs:double" />
+          <xs:element minOccurs="0" name="unit" type="xs:string" />
+          <xs:element minOccurs="0" name="unitOld" type="xs:string" />
+          <xs:element minOccurs="0" name="wasManuallyCreated" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="invoiceApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="invoiceItems" />
+      <xs:enumeration value="placements" />
+      <xs:enumeration value="timecardBatches" />
+      <xs:enumeration value="timecardExpenses" />
+      <xs:enumeration value="timecardTimes" />
+      <xs:enumeration value="timecards" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="invoiceApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="invoiceID" />
+      <xs:enumeration value="amountPaid" />
+      <xs:enumeration value="clientCorporationID" />
+      <xs:enumeration value="comments" />
+      <xs:enumeration value="costCenter" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateBegin" />
+      <xs:enumeration value="dateDue" />
+      <xs:enumeration value="dateEnd" />
+      <xs:enumeration value="dateExported" />
+      <xs:enumeration value="dateInvoice" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="fileExportID" />
+      <xs:enumeration value="invoiceBatchID" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isExported" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="outstandingBalance" />
+      <xs:enumeration value="recipientUserID" />
+      <xs:enumeration value="status" />
+      <xs:enumeration value="terms" />
+      <xs:enumeration value="userID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="invoiceGroupApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="clientCorporationInvoiceGroups" />
+      <xs:enumeration value="placements" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="invoiceGroupApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="invoiceGroupID" />
+      <xs:enumeration value="corporationID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="lastModifyingUserID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="name" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="invoiceItemApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="timecardExpenses" />
+      <xs:enumeration value="timecardTimes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="invoiceItemApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="invoiceItemID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="invoiceID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="payPeriod" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="quantity" />
+      <xs:enumeration value="rate" />
+      <xs:enumeration value="taxRate" />
+      <xs:enumeration value="unit" />
+      <xs:enumeration value="unitOld" />
+      <xs:enumeration value="wasManuallyCreated" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

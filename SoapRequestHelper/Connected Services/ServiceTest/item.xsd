@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://appointment.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://appointment.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="appointmentDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:appointmentDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="appointmentDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="appointmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="appointmentUUID" type="xs:string" />
+          <xs:element minOccurs="0" name="candidateReferenceID" type="xs:int" />
+          <xs:element minOccurs="0" name="clientContactReferenceID" type="xs:int" />
+          <xs:element minOccurs="0" name="communicationMethod" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEnd" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateLastModified" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="isAllDay" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isPrivate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="location" type="xs:string" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="notificationMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="parentAppointmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceDayBits" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceFrequency" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceMax" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceMonthBits" type="xs:int" />
+          <xs:element minOccurs="0" name="recurrenceStyle" type="xs:string" />
+          <xs:element minOccurs="0" name="recurrenceType" type="xs:string" />
+          <xs:element minOccurs="0" name="showTimeAs" type="xs:string" />
+          <xs:element minOccurs="0" name="subject" type="xs:string" />
+          <xs:element minOccurs="0" name="timeZoneID" type="xs:string" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="appointmentAttendeeDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:appointmentAttendeeDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="appointmentAttendeeDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="acceptanceStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="appointmentAttendeeID" type="xs:int" />
+          <xs:element minOccurs="0" name="appointmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="attendeeID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="recurringAppointmentDeleteDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:recurringAppointmentDeleteDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="recurringAppointmentDeleteDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="appointmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="dateBegin" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="deletionID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="appointmentApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="attendees" />
+      <xs:enumeration value="childAppointments" />
+      <xs:enumeration value="recurringDeletes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="appointmentApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="appointmentID" />
+      <xs:enumeration value="appointmentUUID" />
+      <xs:enumeration value="candidateReferenceID" />
+      <xs:enumeration value="clientContactReferenceID" />
+      <xs:enumeration value="communicationMethod" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="dateBegin" />
+      <xs:enumeration value="dateEnd" />
+      <xs:enumeration value="dateLastModified" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="isAllDay" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isPrivate" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="location" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="notificationMinutes" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="parentAppointmentID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="recurrenceDayBits" />
+      <xs:enumeration value="recurrenceFrequency" />
+      <xs:enumeration value="recurrenceMax" />
+      <xs:enumeration value="recurrenceMonthBits" />
+      <xs:enumeration value="recurrenceStyle" />
+      <xs:enumeration value="recurrenceType" />
+      <xs:enumeration value="showTimeAs" />
+      <xs:enumeration value="subject" />
+      <xs:enumeration value="timeZoneID" />
+      <xs:enumeration value="type" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="appointmentAttendeeApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="appointmentAttendeeID" />
+      <xs:enumeration value="acceptanceStatus" />
+      <xs:enumeration value="appointmentID" />
+      <xs:enumeration value="attendeeID" />
+      <xs:enumeration value="migrateGUID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="recurringAppointmentDeleteApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="deletionID" />
+      <xs:enumeration value="appointmentID" />
+      <xs:enumeration value="dateBegin" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

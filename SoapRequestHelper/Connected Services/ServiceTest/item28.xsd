@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://userwork.entity.bullhorn.com/" xmlns:ns1="http://entity.bullhorn.com/" targetNamespace="http://userwork.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=21" namespace="http://entity.bullhorn.com/" />
+  <xs:complexType name="userWorkDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:userWorkDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="userWorkDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:abstractDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="appointmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="assessmentID" type="xs:int" />
+          <xs:element minOccurs="0" name="bhTimestamp" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="client" type="xs:string" />
+          <xs:element minOccurs="0" name="dateAdded" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+          <xs:element minOccurs="0" name="externalID" type="xs:string" />
+          <xs:element minOccurs="0" name="isAuction" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isOpen" type="xs:boolean" />
+          <xs:element minOccurs="0" name="isSendOut" type="xs:boolean" />
+          <xs:element minOccurs="0" name="jobOrderID" type="xs:int" />
+          <xs:element minOccurs="0" name="migrateGUID" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="ownerID" type="xs:int" />
+          <xs:element minOccurs="0" name="placementID" type="xs:int" />
+          <xs:element minOccurs="0" name="price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="published" type="xs:string" />
+          <xs:element minOccurs="0" name="quantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="saleTerms" type="xs:string" />
+          <xs:element minOccurs="0" name="saleType" type="xs:string" />
+          <xs:element minOccurs="0" name="sortOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="timecardID" type="xs:int" />
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+          <xs:element minOccurs="0" name="userFolderID" type="xs:int" />
+          <xs:element minOccurs="0" name="userWorkID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="userWorkApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="userWorkID" />
+      <xs:enumeration value="appointmentID" />
+      <xs:enumeration value="assessmentID" />
+      <xs:enumeration value="bhTimestamp" />
+      <xs:enumeration value="client" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="externalID" />
+      <xs:enumeration value="isAuction" />
+      <xs:enumeration value="isDeleted" />
+      <xs:enumeration value="isOpen" />
+      <xs:enumeration value="isSendOut" />
+      <xs:enumeration value="jobOrderID" />
+      <xs:enumeration value="migrateGUID" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="ownerID" />
+      <xs:enumeration value="placementID" />
+      <xs:enumeration value="price" />
+      <xs:enumeration value="published" />
+      <xs:enumeration value="quantity" />
+      <xs:enumeration value="saleTerms" />
+      <xs:enumeration value="saleType" />
+      <xs:enumeration value="sortOrder" />
+      <xs:enumeration value="timecardID" />
+      <xs:enumeration value="type" />
+      <xs:enumeration value="userFolderID" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

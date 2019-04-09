@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://client.template.entity.bullhorn.com/" xmlns:ns1="http://template.entity.bullhorn.com/" targetNamespace="http://client.template.entity.bullhorn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.bullhornstaffing.com/webservices-2.6/?xsd=36" namespace="http://template.entity.bullhorn.com/" />
+  <xs:complexType name="clientCorporationTemplateDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:clientCorporationTemplateDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="clientCorporationTemplateDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:entityTemplateDto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="categoryID" type="xs:int" />
+          <xs:element minOccurs="0" name="description" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="clientCorporationTemplateAttributeDto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:clientCorporationTemplateAttributeDtoBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="clientCorporationTemplateAttributeDtoBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ns1:entityTemplateAttributeDto">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="clientCorporationTemplateApiAssociation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="templateAttributes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="clientCorporationTemplateApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="templateId" />
+      <xs:enumeration value="categoryID" />
+      <xs:enumeration value="dateAdded" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="displayType" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="groupName" />
+      <xs:enumeration value="isSearchable" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="reportID" />
+      <xs:enumeration value="staticTemplateName" />
+      <xs:enumeration value="tabName" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="clientCorporationTemplateAttributeApiProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="templateAttributeId" />
+      <xs:enumeration value="attributeType" />
+      <xs:enumeration value="description" />
+      <xs:enumeration value="enabled" />
+      <xs:enumeration value="hint" />
+      <xs:enumeration value="isRequired" />
+      <xs:enumeration value="isSearchable" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="optionList" />
+      <xs:enumeration value="sortOrder" />
+      <xs:enumeration value="staticFieldName" />
+      <xs:enumeration value="templateID" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
