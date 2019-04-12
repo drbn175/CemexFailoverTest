@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppWatcher", "WebAppWatc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapRequestHelper", "SoapRequestHelper\SoapRequestHelper.csproj", "{025F3D98-07D3-4093-A4D2-F30AF128A20B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultHelper", "KeyVaultHelper\KeyVaultHelper.csproj", "{7B9EE43B-9F1C-48B4-A3BE-B2D60EFBC698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,12 +47,16 @@ Global
 		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{025F3D98-07D3-4093-A4D2-F30AF128A20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9EE43B-9F1C-48B4-A3BE-B2D60EFBC698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9EE43B-9F1C-48B4-A3BE-B2D60EFBC698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9EE43B-9F1C-48B4-A3BE-B2D60EFBC698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9EE43B-9F1C-48B4-A3BE-B2D60EFBC698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {60014B29-2EB2-43B5-8620-6A2563F85A9B}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {60014B29-2EB2-43B5-8620-6A2563F85A9B}
 	EndGlobalSection
 EndGlobal

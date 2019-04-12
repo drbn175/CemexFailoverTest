@@ -51,15 +51,9 @@ namespace WebAppWatcher
         
         private List<WebApiCookie> customCookies;
 
-       public List<WebApiCookie> CustomCookies { get {
-                if (customCookies == null)
-                {
-                    customCookies = JsonConvert.DeserializeObject<List<WebApiCookie>>(Environment.GetEnvironmentVariable("Cookies"));
-                }
+       public List<WebApiCookie> CustomCookies { get; set; }
 
-                return customCookies;
-            }
-        }
+        public bool NeedAuthenticate { get; set; }
         
     }
     public class WebApiEntity
@@ -73,7 +67,7 @@ namespace WebAppWatcher
 
     public class WebApiCookie
     {
-        public string name { get; set; }
-        public string value { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

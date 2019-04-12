@@ -10,9 +10,18 @@
     "Increment": 2,
     "DataBaseTimeout": 5,
     "LogAnalyticsUrl": "https://{0}.ods.opinsights.azure.com/api/logs?api-version=2016-04-01",
-    "LogAnalyticsWorkspaceId": "54c93cbe-4784-4025-a754-6d8f5c5b3808",
-    "LogAnalyticsWorkspaceKey": "n6mX/6/D5eTOyHr0PNTw1+M+W1JyLs47w23TEn1PQUdAN+ZxNj/0MCyAmmvWA8556dzA+1AL+rO3th4Ets002A==",
+    "LogAnalyticsWorkspaceId": "ae357da4-1e97-4a85-8776-3c47e302c1e7",
+    "LogAnalyticsWorkspaceKey": "fi8pYlB3usnC5/zdioesMP4E5z70S11XlBmlXqCV2+q/caEtuV1yzturq8YF5INxkAYCoYdsbpAduLwOdP5MUA==",
     "AzureFunctionLog": "RecoveryTest",
+    "ConnectionString": "Server=tcp:cemex-server-test.database.windows.net,1433;Initial Catalog=cmdb;Persist Security Info=False;User ID=sqladmin;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "KeyVault": "cemex-kv",
+    "Enviroment": "QA",
+    "Region": "East US",
+    "Command": "EXEC spGetSQLFunctionParameters @Region = '{0}', @Environment = '{1}'",
+    "CheckCommand": "INSERT INTO TestAV.PingTable VALUES (1); DELETE TestAV.PingTable",
+    "ClientID": "0511711d-a546-4379-8877-5d7333c4d957",
+    "SecretID": "Qu3ITpOpCc2bJke7We7sCwIgvZQBTiasIoYfWWhB2VQ=",
+    "KeyVaultUrl": "https://{0}.vault.azure.net/",
     "DataBases": "[{'ResourceId': '/subscriptions/289e9588-01f5-4913-ac29-a36095e43106/resourceGroups/sqltest/providers/Microsoft.Sql/servers/rjgd80sql1/databases/rjgd80db1','PrincipalFailoverGroup': 'rjgd80sql1.database.windows.net','SecondaryFailoverGroup':'rjgd80sql2.database.windows.net','DataBaseConnection':'Server=tcp:pgrdevsdbsirsi010.database.windows.net,1433;Initial Catalog=pgrdevsqlsirsi010;Persist Security Info=False;User ID=sirsisqladmin;Password=#>5irP$O].;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;','Command':'INSERT INTO TestAV.PingTable VALUES (1); DELETE TestAV.PingTable'}]"
   }
 }

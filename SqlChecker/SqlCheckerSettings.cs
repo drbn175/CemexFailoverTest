@@ -39,6 +39,21 @@ namespace SqlChecker
                 return _logAnalyticsWorkspaceKey;
             }
         }
+
+        private string _connectionString;
+
+        public string ConnectionString
+        {
+            get
+            {
+                if (_connectionString == null || _connectionString == string.Empty)
+                {
+                    _connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+                }
+                return _connectionString;
+            }
+        }
+        
     }
     public class DataBaseEntity
     {

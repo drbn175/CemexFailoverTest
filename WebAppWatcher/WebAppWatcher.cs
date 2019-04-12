@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -64,6 +65,7 @@ namespace WebAppWatcher
             string statusCode = null;
             DateTime time;
             TimeSpan took;
+            Authenticate(webAppWatcherSettings);
             foreach (WebApiEntity webapp in webAppWatcherSettings.WebApis)
             {
                 //Logic to identify webapp failing
@@ -71,17 +73,13 @@ namespace WebAppWatcher
                 {
                     time = DateTime.Now;
                     log.LogInformation($"Saying hello to {webapp.Url}.");
-                    //if (webapp.IsSoap)
-                    //{
-                    //    SoapRequestHelper.SoapRequestHelper.TestMethod();
-                    //}
-                    //else
-                    //{
+                    
+                    
                         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(webapp.Url);
                         request.CookieContainer = new CookieContainer();
                         foreach (WebApiCookie c in webAppWatcherSettings.CustomCookies)
                         {
-                            request.CookieContainer.Add(new Cookie(c.name, c.value, string.Empty, new Uri(webapp.Url).Host));
+                            request.CookieContainer.Add(new Cookie(c.Name, c.Value, string.Empty, new Uri(webapp.Url).Host));
                         }
 
                         request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
@@ -92,13 +90,18 @@ namespace WebAppWatcher
                         {
                             result = await reader.ReadToEndAsync();
                             statusCode = response.StatusCode.ToString();
+                            if(response.StatusCode == HttpStatusCode.Unauthorized)
+                            {
+                                webAppWatcherSettings.NeedAuthenticate = true;
+                            }
                         }
 
                         took = DateTime.Now.Subtract(time);
-                    //}
+                   
                    
 
                     await LogAnalyticsHelper.LogAnalyticsHelper.LogDataAsync(webAppWatcherSettings.LogAnalyticsWorkspaceId, webAppWatcherSettings.LogAnalyticsUrlFormat, webAppWatcherSettings.LogAnalyticsWorkspaceKey, webAppWatcherSettings.LogName, new { webapp.Url, Duration= took.Milliseconds, OuterMessage = "Success", StatusCode= statusCode });
+                    
                 }
                 catch (Exception ex)
                 {
@@ -107,6 +110,30 @@ namespace WebAppWatcher
             }
            
         }
+
+        private static void Authenticate(WebAppWatcherSettings webAppWatcherSettings)
+        {
+            if (webAppWatcherSettings.NeedAuthenticate || webAppWatcherSettings.CustomCookies == null || webAppWatcherSettings.CustomCookies.Count == 0)
+            {
+                webAppWatcherSettings.CustomCookies = new List<WebApiCookie>();
+                CookieContainer cookies = new CookieContainer();
+                HttpClientHandler handler = new HttpClientHandler();
+                handler.CookieContainer = cookies;
+                handler.Credentials = new NetworkCredential(Environment.GetEnvironmentVariable("User"), Environment.GetEnvironmentVariable("Password"));
+                HttpClient client = new HttpClient(handler);
+
+                HttpResponseMessage response = client.PostAsync(Environment.GetEnvironmentVariable("UrlLogin"), null).Result;
+
+                Uri uri = new Uri(Environment.GetEnvironmentVariable("UrlLogin"));
+                IEnumerable<Cookie> responseCookies = cookies.GetCookies(uri).Cast<Cookie>();
+                foreach (Cookie cookie in responseCookies)
+                {
+                    webAppWatcherSettings.CustomCookies.Add(new WebApiCookie() { Name = cookie.Name, Value = cookie.Value });
+                }
+            }
+        }
+
+       
 
         [FunctionName("WebAppWatcher_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
